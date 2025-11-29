@@ -80,13 +80,16 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -177,4 +180,35 @@
     });
   });
 
+})();
+
+/* Ensure hero background video auto-plays and loops reliably */
+(function() {
+  try {
+    const heroVideo = document.querySelector('.hero .hero-image video');
+    if (!heroVideo) return;
+    // Ensure muted so autoplay is allowed
+    heroVideo.muted = true;
+    heroVideo.playsInline = true;
+    heroVideo.loop = true;
+
+    const safePlay = () => {
+      // Some browsers may reject autoplay; catch to avoid uncaught promise
+      const p = heroVideo.play();
+      if (p && p.then) p.catch(() => {});
+    };
+
+    // Try to play on load and when visibility changes
+    window.addEventListener('load', safePlay);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) safePlay();
+    });
+
+    // Fallback: if 'ended' fires, restart
+    heroVideo.addEventListener('ended', () => {
+      try { heroVideo.currentTime = 0; heroVideo.play(); } catch (e) {}
+    });
+  } catch (e) {
+    // ignore errors
+  }
 })();

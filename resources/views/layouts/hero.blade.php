@@ -2,7 +2,7 @@
       <div class="container-fluid p-0">
         <div class="hero-wrapper">
           <div class="hero-image">
-            <img src="{{ asset('assets/img/health/showcase-1.webp') }}" alt="Advanced Healthcare" class="img-fluid">
+            <video class="elementor-background-video-hosted" autoplay muted playsinline loop src="https://spineandnerveghana.com/wp-content/uploads/2023/07/Website-Hero-Background-Video3.mp4" aria-hidden="true" role="img"></video>
           </div>
 
           <div class="hero-content">
@@ -23,15 +23,15 @@
                       <div class="badge-item">
                         <i class="bi bi-telephone-fill"></i>
                         <div class="badge-content">
-                          <span>Emergency Line</span>
-                          <strong>+1 (555) 987-6543</strong>
+                          <span>Call Now</span>
+                          <strong>+267 71 234 567</strong>
                         </div>
                       </div>
                       <div class="badge-item">
                         <i class="bi bi-clock-fill"></i>
                         <div class="badge-content">
                           <span>Working Hours</span>
-                          <strong>Mon-Fri: 8AM-8PM</strong>
+                          <strong>Mon-Fri: 8AM-5PM</strong>
                         </div>
                       </div>
                     </div>
@@ -39,7 +39,7 @@
                 </div>
               </div>
 
-              <div class="features-wrapper">
+              <!-- <div class="features-wrapper">
                 <div class="row gy-4">
 
                   <div class="col-lg-4">
@@ -79,7 +79,7 @@
                   </div>
 
                 </div>
-              </div>
+              </div> -->
 
             </div>
           </div>

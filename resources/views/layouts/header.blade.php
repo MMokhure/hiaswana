@@ -52,7 +52,7 @@
               <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
           </nav>
 
-          <a class="btn-getstarted" href="appointment.html">Book an Appointment</a>
+          <a class="btn-getstarted" href="appointment.html">Appointment</a>
 
       </div>
   </header>

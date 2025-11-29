@@ -27,6 +27,7 @@
   --accent-color: #f15920; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+--secondary-color: #022e63;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -176,9 +177,11 @@ h6 {
 }
 
 @media (max-width: 575px) {
-  .header .logo svg {
-    height: 28px;
+  .header .logo img {
+    height: 45px;
   }
+
+
 }
 
 .header .logo h4 {
@@ -503,15 +506,15 @@ h6 {
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-  color: var(--default-color);
-  background-color: var(--background-color);
+  color: var(--contrast-color);
+  background-color: var(--secondary-color);
   font-size: 14px;
   position: relative;
 }
 
 .footer .footer-top {
   padding-top: 50px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid color-mix(in srgb, var(--contrast-color), transparent 90%);
 }
 
 .footer .footer-about .logo {
@@ -525,7 +528,7 @@ h6 {
 }
 
 .footer .footer-about .logo span {
-  color: var(--heading-color);
+  color: var(--contrast-color);
   font-family: var(--heading-font);
   font-size: 26px;
   font-weight: 700;
@@ -544,16 +547,15 @@ h6 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  border: 1px solid color-mix(in srgb, var(--contrast-color), transparent 50%);
   font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  color: color-mix(in srgb, var(--contrast-color), transparent 20%);
   margin-right: 10px;
   transition: 0.3s;
 }
 
 .footer .social-links a:hover {
   color: var(--accent-color);
-  border-color: var(--accent-color);
 }
 
 .footer h4 {
@@ -561,10 +563,13 @@ h6 {
   font-weight: bold;
   position: relative;
   padding-bottom: 12px;
+  color: var(--contrast-color);
+
 }
 
 .footer .footer-links {
   margin-bottom: 30px;
+  color: var(--contrast-color)
 }
 
 .footer .footer-links ul {
@@ -590,7 +595,7 @@ h6 {
 }
 
 .footer .footer-links ul a {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: color-mix(in srgb, var(--contrast-color), transparent 30%);
   display: inline-block;
   line-height: 1;
 }
@@ -877,6 +882,19 @@ section,
   object-position: center;
 }
 
+/* Background video: make it fill the hero and cover */
+.hero .hero-image video,
+.hero .hero-image .elementor-background-video-hosted {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
 .hero .hero-content {
   position: relative;
   z-index: 3;
@@ -1024,6 +1042,39 @@ section,
   margin-bottom: 0;
 }
 
+/*--------------------------------------------------------------
+# Card Hover Interactions
+# Adds a subtle scale and accent-color border highlight on hover
+--------------------------------------------------------------*/
+.card.transition-hover {
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s ease, border 0.35s ease;
+  transform-origin: center;
+  will-change: transform;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 0.5rem;
+}
+
+.card.transition-hover:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--accent-color), rgba(0,0,0,0.12));
+  border: 1px solid var(--accent-color) !important;
+}
+
+.card.transition-hover:focus-within,
+.card.transition-hover:focus {
+  transform: translateY(-4px) scale(1.02);
+  border: 1px solid var(--accent-color) !important;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--accent-color), rgba(0,0,0,0.08));
+}
+
+.border-hover-primary {
+  /* keep class for semantic use */
+}
+
+.card.transition-hover.border-hover-primary:hover {
+  border: 1px solid var(--accent-color) !important;
+}
+
 @media (max-width: 1200px) {
   .hero .hero-content .content-box h1 {
     font-size: 3rem;
@@ -1123,7 +1174,7 @@ section,
   position: absolute;
   bottom: 0;
   right: 30px;
-  background-color: var(--accent-color);
+  background-color: var(--secondary-color);
   color: var(--contrast-color);
   padding: 20px;
   border-radius: 8px;
@@ -2006,7 +2057,7 @@ section,
 }
 
 .call-to-action .emergency-alert {
-  background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), black 20%) 100%);
+  background: linear-gradient(135deg, var(--secondary-color) 0%, color-mix(in srgb, var(--secondary-color), black 20%) 100%);
   padding: 2rem;
   border-radius: 15px;
   margin-top: 3rem;
@@ -2055,7 +2106,7 @@ section,
   }
 }
 
-.call-to-action .emergency-alert .emergency-text h4 {
+.call-to-action .emergency-alert .emergency-text h2 {
   color: var(--contrast-color);
   font-size: 1.4rem;
   font-weight: 600;
