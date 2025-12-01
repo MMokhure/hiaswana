@@ -1,8 +1,10 @@
 <section id="hero" class="hero section dark-background">
       <div class="container-fluid p-0">
         <div class="hero-wrapper">
-          <div class="hero-image">
-            <video class="elementor-background-video-hosted" autoplay muted playsinline loop src="https://spineandnerveghana.com/wp-content/uploads/2023/07/Website-Hero-Background-Video3.mp4" aria-hidden="true" role="img"></video>
+          <div class="hero-image slideshow">
+            <div class="slide" data-bg="{{ asset('assets/img/bg-img.jpeg') }}" aria-hidden="true"></div>
+            <div class="slide" data-bg="{{ asset('assets/img/bgimg.jpeg') }}" aria-hidden="true"></div>
+            <div class="slide" data-bg="{{ asset('assets/img/about2.jpeg') }}" aria-hidden="true"></div>
           </div>
 
           <div class="hero-content">
@@ -11,7 +13,7 @@
                 <div class="col-lg-7 col-md-10" data-aos="fade-right" data-aos-delay="100">
                   <div class="content-box">
                     <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">Leading Healthcare Specialists</span>
-                    <h1 data-aos="fade-up" data-aos-delay="200">Spine Specialist In Gaborone, Botswana</h1>
+                    <h1 class="playful" data-aos="fade-up" data-aos-delay="200">Spine Specialist In Gaborone, Botswana</h1>
                     <p data-aos="fade-up" data-aos-delay="250">YOUR PATHWAY TO A PAIN FREE LIFE.</p>
 
                     <div class="cta-group" data-aos="fade-up" data-aos-delay="300">
@@ -31,15 +33,15 @@
                         <i class="bi bi-clock-fill"></i>
                         <div class="badge-content">
                           <span>Working Hours</span>
-                          <strong>Mon-Fri: 8AM-5PM</strong>
+                          <strong>Mon-Sat: 8AM-5PM</strong>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="features-wrapper">
+<!-- 
+              <div class="features-wrapper">
                 <div class="row gy-4">
 
                   <div class="col-lg-4">
@@ -85,4 +87,15 @@
           </div>
         </div>
       </div>
+      <script>
+        // Set slide background images from data-bg attributes to avoid nested-quote issues
+        (function(){
+          try {
+            document.querySelectorAll('#hero .slide').forEach(function(s){
+              var bg = s.getAttribute('data-bg');
+              if(bg) s.style.backgroundImage = 'url("' + bg + '")';
+            });
+          } catch(e){ /* fail silently */ }
+        })();
+      </script>
     </section>
