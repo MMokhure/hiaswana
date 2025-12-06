@@ -1,28 +1,36 @@
-# Use official PHP image with extensions for Laravel
-FROM php:8.2-fpm
+# Use PHP CLI image
+FROM php:8.2-cli
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
+    libpng-dev \
     libzip-dev \
+    zip unzip git curl \
     libonig-dev \
-    curl \
-    zip \
-    && docker-php-ext-install pdo pdo_mysql zip mbstring
+    libxml2-dev \
+    && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl bcmath gd
 
 # Set working directory
-WORKDIR /var/www/html
+WORKDIR /app
 
 # Copy project files
 COPY . .
 
 # Install Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-RUN composer install --no-dev --optimize-autoloader
+RUN curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer
 
-# Expose the dynamic port from Railway
-ENV PORT=${PORT:-8080}
+# Install PHP dependencies
+RUN composer clear-cache \
+    && composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
-# Run migrations and start the server
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT}
+# Expose port
+EXPOSE 8080
+ENV PORT=8080
+
+# Copy wait-for-db script
+COPY wait-for-db.sh /app/wait-for-db.sh
+RUN chmod +x /app/wait-for-db.sh
+
+# Run the script
+CMD ["/app/wait-for-db.sh"]
