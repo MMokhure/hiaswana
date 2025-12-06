@@ -12,7 +12,4 @@
 <!-- ======= New Patient Section ======= -->
 @include('layouts.new_patient')
 
-@include('layouts.appointments')
-
-
 @endsection

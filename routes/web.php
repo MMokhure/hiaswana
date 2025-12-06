@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/services', function () {
-    return view('services');
-});
-Route::get('/contact-us', function () {
-    return view('contact');
-});
+Route::view('/', 'index');
+Route::view('/about', 'about');
+
+// New HIASWANA pages
+Route::view('/membership', 'membership');
+Route::view('/events', 'events');
+Route::view('/team', 'team');
+Route::view('/publications', 'publications');
+Route::view('/contact', 'contact');
+
+// Legacy route kept temporarily for compatibility
+Route::view('/contact-us', 'contact');

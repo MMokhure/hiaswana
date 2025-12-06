@@ -1,71 +1,61 @@
+  <footer id="footer" class="footer position-relative">
+    <!-- Scroll to Top Button -->
+    <a href="#" class="scroll-top" id="scroll-top">
+      <i class="bi bi-chevron-up"></i>
+    </a>
 
-  <footer id="footer" class="footer position-relative light-background">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="" class="logo d-flex align-items-center">
-            <span class="sitename">Spinal Rehabilitation Center</span>
+    <!-- Top Section: Social Icons & Navigation -->
+    <div class="footer-top-section">
+      <div class="container">
+        <!-- Social Media Icons -->
+        <div class="footer-social-icons text-center">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <i class="bi bi-facebook"></i>
           </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>Gaborone, Botswana</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+267 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@spinalrehabcenter.org</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Book Appointment</a></li>
-            <li><a href="#">Services</a></li>
-             </ul>
+        <!-- Primary Navigation Links -->
+        <div class="footer-primary-nav text-center">
+          <a href="{{ url('/') }}">HOME</a>
+          <a href="{{ url('/about') }}">ABOUT</a>
+          <a href="{{ url('/membership') }}">MEMBERSHIP</a>
+          <a href="{{ url('/events') }}">EVENTS</a>
+          <a href="{{ url('/team') }}">TEAM</a>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="/services#back-neck">Spinal Decompression</a></li>
-            <li><a href="/services#knee">Back &amp; Neck Pain</a></li>
-            <li><a href="/services#knee">Knee Pain Treatment</a></li>
-            <li><a href="/services#neuropathy">Peripheral Neuropathy</a></li>
-
-            <li><a href="/services#sciatica">Sciatica Relief</a></li>
-          </ul>
+        <!-- Secondary Navigation Links -->
+        <div class="footer-secondary-nav text-center">
+          <a href="{{ url('/contact') }}">CONTACT</a>
+          <span class="nav-divider">|</span>
+          <a href="{{ url('/publications') }}">PUBLICATIONS</a>
+          <span class="nav-divider">|</span>
+          <a href="{{ url('/events') }}">WORKSHOPS</a>
+          <span class="nav-divider">|</span>
+          <a href="{{ url('/membership') }}">JOIN US</a>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Data Proctection</h4>
-          <ul>
-          <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-             </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Get Directions</h4>
-          <ul>
-            <li><a href="#">Pick Location</a></li>
-            
-          </ul>
-        </div>
-
       </div>
     </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <script>document.write(new Date().getFullYear());</script> <span>Copyright</span> <strong class="px-1 sitename">Spinal Rehabilitation Center</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-          Designed by <a target="__blank" href="https://achievilholdings.com/" style="color:#46b83c">Achievil Holdings</a>
+    <!-- Middle Section: Tagline Band -->
+    <div class="footer-tagline-band">
+      <div class="container text-center">
+        <p class="footer-tagline">ADVANCING DIGITAL HEALTH & HEALTH INFORMATICS IN BOTSWANA ❤️</p>
+      </div>
+    </div>
+
+    <!-- Bottom Section: Copyright -->
+    <div class="footer-bottom-section">
+      <div class="container text-center">
+        <p class="footer-copyright">© <script>document.write(new Date().getFullYear());</script> HIASWANA | ALL RIGHTS RESERVED</p>
       </div>
     </div>
 

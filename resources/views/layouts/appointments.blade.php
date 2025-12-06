@@ -1,5 +1,5 @@
-    <!-- appointment Section -->
-    <section id="appointment" class="appointment section">
+    <!-- appointment Section (no longer used; kept only as reference) -->
+    <section id="appointment" class="appointment section d-none">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 

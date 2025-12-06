@@ -1,55 +1,99 @@
  <!-- Home About Section -->
-    <section id="home-about" class="home-about section">
+   <section id="home-about" class="home-about section modern-about-section">
+      <div class="container">
+        <div class="row g-5 align-items-stretch">
+          <!-- Image Column with Statistics Overlay -->
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="about-image-wrapper-new">
+              <div class="about-image-frame-new about-slideshow">
+                <div class="about-slide active" data-bg="{{asset('assets/img/about3.jpeg')}}"></div>
+                <div class="about-slide" data-bg="{{asset('assets/img/bg-img.jpeg')}}"></div>
+                <div class="about-slide" data-bg="{{asset('assets/img/bgimg.jpeg')}}"></div>
+                <div class="about-slide" data-bg="{{asset('assets/img/about2.jpeg')}}"></div>
+              </div>
+              
+              <!-- Statistics Overlay -->
+              <div class="statistics-overlay">
+                <div class="stat-item">
+                  <div class="stat-number">10+</div>
+                  <div class="stat-label">YEARS</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">270+</div>
+                  <div class="stat-label">MEMBERS</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">89</div>
+                  <div class="stat-label">PROJECTS</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">53+</div>
+                  <div class="stat-label">EVENTS</div>
+                </div>
+              </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-5 align-items-center">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-            <div class="about-image">
-              <img src="{{asset('assets/img/about3.jpeg')}}" alt="About Us" class="img-fluid rounded-3 mb-4">
-              <div class="experience-badge">
-                <span class="years">25+</span>
-                <span class="text">Years of Excellence</span>
+              <!-- Slideshow Indicators -->
+              <div class="slideshow-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="about-content">
-              <h2>Welcome to Spinal Rehabilitation Center</h2>
-              <p class="lead">Non-Surgical Spinal Decompression in Botswana.</p>
+          <!-- Content Column -->
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <div class="about-content-new">
+              <div class="about-subheading">ABOUT US</div>
+              
+              <h2 class="about-heading-new">
+                Our Work Promise To Uphold The Trust Placed
+              </h2>
+              
+              <p class="about-description-new">
+                We are a multidisciplinary community of health professionals, ICT experts, researchers, and students dedicated to
+                advancing biomedical and health informatics in Botswana and the region. Inspired by global bodies such as the
+                International Medical Informatics Association (IMIA) and the Pan‑African Health Informatics Association (HELINA),
+                we promote the safe, ethical, and effective use of information and communication technologies to improve health
+                for all.
+              </p>
 
-              <p>Spinal rehabilitation center is a skilled and knowledgeable Spinal Decompression,and Cold Laser office ready to help you achieve a pain-free, healthy lifestyle. Our highly trained staff works closely with our doctors to help you achieve optimal health!</p>
+              <!-- Checkmarked List -->
+              <ul class="about-checklist">
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Health Informatics Leadership & Advocacy</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Capacity Building & Professional Development</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Research & Innovation in Digital Health</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Collaboration & Knowledge Sharing</span>
+                </li>
+              </ul>
 
-              <div class="row g-4 mt-4">
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                  <div class="feature-item">
-                    <div class="icon">
-                      <i class="bi bi-heart-pulse"></i>
-                    </div>
-                    <h4>Compassionate Care</h4>
-                    <p>We provide effective, non‑surgical care for back and neck pain, knee and hip pain, sciatica, spondylosis, arthritis, and leg/foot numbness or burning.</p>
+              <!-- Experience Badge and CTA -->
+              <div class="about-cta-section">
+                <div class="experience-badge-new">
+                  <div class="badge-number">10+</div>
+                  <div class="badge-text">
+                    <div>YEARS</div>
+                    <div>OF EXPERIENCE</div>
                   </div>
                 </div>
-
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
-                  <div class="feature-item">
-                    <div class="icon">
-                      <i class="bi bi-star"></i>
-                    </div>
-                    <h4>Medical Excellence</h4>
-                    <p>We combine the best of technology and rehabilitation that offers a solution that is painless and powerful that targets the cause of your symptoms giving you results that will change your life.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="cta-wrapper mt-4">
-                <a href="about.html" class="btn btn-primary">Learn More About Us</a>
-                <a href="#" class="btn btn-outline">Meet Our Team</a>
+                <a href="{{ url('/about') }}" class="btn-learn-more">
+                  Learn More
+                </a>
               </div>
             </div>
           </div>
         </div>     
       </div>
-
     </section><!-- /Home About Section -->

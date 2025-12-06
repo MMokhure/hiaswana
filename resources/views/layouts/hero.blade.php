@@ -10,32 +10,38 @@
           <div class="hero-content">
             <div class="container">
               <div class="row">
-                <div class="col-lg-7 col-md-10" data-aos="fade-right" data-aos-delay="100">
+                <div class="col-lg-7 col-md-10" data-aos="fade-up" data-aos-delay="100">
                   <div class="content-box">
-                    <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">Leading Healthcare Specialists</span>
-                    <h1 class="playful" data-aos="fade-up" data-aos-delay="200">Spine Specialist In Gaborone, Botswana</h1>
-                    <p data-aos="fade-up" data-aos-delay="250">YOUR PATHWAY TO A PAIN FREE LIFE.</p>
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Building a Connected, Data‑Driven Health System</h1>
+                    <p class="hero-description animated-text" data-aos="fade-up" data-aos-delay="250">
+                      <span class="word-animate">We</span> <span class="word-animate">bring</span> <span class="word-animate">together</span> <span class="word-animate">clinicians,</span> <span class="word-animate">technologists,</span> <span class="word-animate">academics,</span> <span class="word-animate">and</span> <span class="word-animate">policymakers</span> <span class="word-animate">to</span> <span class="word-animate">strengthen</span> <span class="word-animate">digital</span> <span class="word-animate">health</span> <span class="word-animate">and</span> <span class="word-animate">health</span> <span class="word-animate">information</span> <span class="word-animate">systems</span> <span class="word-animate">across</span> <span class="word-animate">Botswana.</span>
+                    </p>
 
-                    <div class="cta-group" data-aos="fade-up" data-aos-delay="300">
-                      <a href="appointment.html" class="btn btn-primary">Book Appointment</a>
-                      <a href="services.html" class="btn btn-outline">Explore Services</a>
-                    </div>
-
-                    <div class="info-badges" data-aos="fade-up" data-aos-delay="350">
-                      <div class="badge-item">
-                        <i class="bi bi-telephone-fill"></i>
-                        <div class="badge-content">
-                          <span>Call Now</span>
-                          <strong>+267 71 234 567</strong>
+                    <div class="hero-cta-cards" data-aos="fade-up" data-aos-delay="300">
+                      <a href="{{ url('/contact') }}" class="hero-cta-card">
+                        <div class="cta-card-icon">
+                          <i class="bi bi-telephone-fill"></i>
                         </div>
-                      </div>
-                      <div class="badge-item">
-                        <i class="bi bi-clock-fill"></i>
-                        <div class="badge-content">
-                          <span>Working Hours</span>
-                          <strong>Mon-Sat: 8AM-5PM</strong>
+                        <div class="cta-card-content">
+                          <span class="cta-card-label">Get in touch</span>
+                          <strong class="cta-card-value">+267 71 234 567</strong>
                         </div>
-                      </div>
+                        <div class="cta-card-arrow">
+                          <i class="bi bi-arrow-right"></i>
+                        </div>
+                      </a>
+                      <a href="{{ url('/events') }}" class="hero-cta-card">
+                        <div class="cta-card-icon">
+                          <i class="bi bi-calendar-event-fill"></i>
+                        </div>
+                        <div class="cta-card-content">
+                          <span class="cta-card-label">Community Activities</span>
+                          <strong class="cta-card-value">Workshops & trainings, Conference, webinars, forums</strong>
+                        </div>
+                        <div class="cta-card-arrow">
+                          <i class="bi bi-arrow-right"></i>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>

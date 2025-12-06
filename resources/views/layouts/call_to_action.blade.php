@@ -206,12 +206,12 @@
             border-radius: 2px;
         }
     </style>
-    <!-- Spine Specialist Section -->
-    <section class="section-padding bg-light section">
+    <!-- Process section (repurposed for HIASWANA if needed). Currently unused on homepage. -->
+    <section class="section-padding bg-light section d-none">
         <div class="container" data-aos="fade-up" data-aos-delay="200">
             <div class="section-header">
-                <h2 class="section-title">Seeing a Spine Specialist in Gaborone</h2>
-                <h3 class="section-subtitle">What to expect when you visit<br>Spinal Rehabilitation Center</h3>
+                <h2 class="section-title">Our Typical Engagement Process</h2>
+                <h3 class="section-subtitle">You can customise this section later to describe how organisations work with HIASWANA.</h3>
             </div>
             
             <!-- Horizontal Process Steps -->
@@ -221,52 +221,45 @@
                     <div class="process-step">
                         <span class="step-number">1</span>
                         <img src="https://spineandnerveghana.com/wp-content/uploads/2023/06/untitled_design_17.png" alt="Schedule Consultation" class="process-icon">
-                        <h4>Schedule Consultation</h4>
-                        <p>Fill out a form today to schedule a consultation with our Doctors. Don't wait.</p>
+                        <h4>Initial Contact</h4>
+                        <p>Reach out to HIASWANA to discuss your digital health or health informatics needs.</p>
                     </div>
                     
                     <!-- Step 2 -->
                     <div class="process-step">
                         <span class="step-number">2</span>
                         <img src="https://spineandnerveghana.com/wp-content/uploads/2023/06/bd2c16e745e19ba2291747055bfeca86.png" alt="Consultation" class="process-icon">
-                        <h4>Initial Consultation</h4>
-                        <p>At your consultation, the doctor will take a thorough history and decide if you are a candidate for our treatment.</p>
+                        <h4>Scoping Discussion</h4>
+                        <p>We clarify objectives, partners, and scope for collaboration or support.</p>
                     </div>
                     
                     <!-- Step 3 -->
                     <div class="process-step">
                         <span class="step-number">3</span>
                         <img src="https://spineandnerveghana.com/wp-content/uploads/2023/06/untitled_design_18.png" alt="Examination" class="process-icon">
-                        <h4>Examination & Diagnosis</h4>
-                        <p>After a thorough examination and professional imaging, we make an official diagnosis.</p>
+                        <h4>Planning</h4>
+                        <p>Together we define activities such as training, standards support, or research.</p>
                     </div>
                     
                     <!-- Step 4 -->
                     <div class="process-step">
                         <span class="step-number">4</span>
                         <img src="https://spineandnerveghana.com/wp-content/uploads/2023/06/healthcare-treatment-plan-icon.png" alt="Treatment Plan" class="process-icon">
-                        <h4>Treatment Plan</h4>
-                        <p>Your individualized treatment plan is designed to treat your pain at the source, and provide lasting relief.</p>
+                        <h4>Implementation</h4>
+                        <p>Activities are implemented with clear roles, timelines, and documentation.</p>
                     </div>
                     
                     <!-- Step 5 -->
                     <div class="process-step">
                         <span class="step-number">5</span>
                         <img src="https://spineandnerveghana.com/wp-content/uploads/2023/06/img_554365_1.png" alt="Recovery" class="process-icon">
-                        <h4>Recovery & Results</h4>
-                        <p>You've taken your life back, avoided medications and surgeries. You're "shocked" you feel this good.</p>
+                        <h4>Review & Learning</h4>
+                        <p>We capture lessons learnt and share outputs with the wider health informatics community.</p>
                     </div>
                 </div>
             </div>
             
-            <!-- CTA Button -->
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <a href="/book-appointment/" class="btn btn-primary btn-xl">
-                        <i class="fas fa-calendar-check me-2"></i>Book Your Appointment
-                    </a>
-                </div>
-            </div>
+            <!-- CTA Button (hidden until repurposed) -->
         </div>
     </section>
 

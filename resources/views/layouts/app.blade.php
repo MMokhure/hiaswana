@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Spinal Rehabilitation Center</title>
+  <title>HIASWANA - Health Informatics Association of Botswana</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 

@@ -6,8 +6,8 @@
   <div class="container mt-5 py-5">
     <div class="row align-items-center">
       <div class="col-lg-7">
-        <h1 class="display-5">About Spinal Rehabilitation Center</h1>
-        <p class="lead">Leaders in non-surgical spine care and joint pains treatment in Botswana — combining clinical excellence with compassionate, personalised rehabilitation.</p>
+        <h1 class="display-5">HIASWANA</h1>
+        <p class="lead">First Health informatics Association in Botswana.</p>
         <div class="mt-4">
           <a href="{{ url('/#appointment') }}" id="appointment-btn" class="btn me-2 rounded-pill ">Book Appointment</a>
           <a href="{{ url('/services') }}" class="btn btn-outline rounded-pill">Our Services</a>

@@ -10,7 +10,7 @@
             <div class="contact-info-header">
               <h3>Contact Information</h3>
               <p>
-                We're here to help. Contact our office for appointments, referrals, or general inquiries — our team responds promptly during working hours.
+                We're here to help. Contact HIASWANA for membership, collaboration opportunities, or general enquiries — our team responds promptly during working hours.
               </p>
             </div>
 
@@ -32,7 +32,7 @@
                   </div>
                   <div class="card-content">
                     <h4>Email</h4>
-                    <p><a href="mailto:info@spinalrehab.org">info@spinalrehab.org</a></p>
+                    <p><a href="mailto:info@hiaswana.co.bw">info@hiaswana.co.bw</a></p>
                   </div>
                 </div>
 
