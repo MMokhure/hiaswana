@@ -1,10 +1,18 @@
 #!/bin/sh
 set -e
 
-echo "Waiting for database to be ready..."
+echo "Waiting for PostgreSQL database to be ready..."
 
-# Loop until database is reachable
-until php -r "new PDO('mysql:host=' . getenv('DB_HOST') . ';port=' . getenv('DB_PORT') . ';dbname=' . getenv('DB_DATABASE'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));" 2>/dev/null
+# Loop until PostgreSQL is reachable
+until php -r "
+new PDO(
+    'pgsql:host=' . getenv('DB_HOST') .
+    ';port=' . getenv('DB_PORT') .
+    ';dbname=' . getenv('DB_DATABASE'),
+    getenv('DB_USERNAME'),
+    getenv('DB_PASSWORD')
+);
+" 2>/dev/null
 do
   echo "Database not ready yet, sleeping 2 seconds..."
   sleep 2

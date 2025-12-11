@@ -1,7 +1,6 @@
-# Use PHP 8.4 FPM (latest)
-FROM php:8.4-fpm
+FROM php:8.2-cli
 
-# Install system dependencies
+# Install system dependencies including PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libzip-dev \
@@ -9,32 +8,24 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libpq-dev \
-    && docker-php-ext-install pdo pdo_pgsql pgsql mbstring zip bcmath gd
+    && docker-php-ext-install pdo pdo_pgsql pgsql mbstring zip exif pcntl bcmath gd
 
-# Install Composer globally
+WORKDIR /app
+
+COPY . .
+
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
 
-# Set working directory
-WORKDIR /app
-
-# Copy project files
-COPY . .
-
-# Install PHP dependencies (production)
+# Install dependencies
 RUN composer clear-cache \
     && composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
-# Permissions for Laravel storage & cache
-RUN chmod -R 777 storage bootstrap/cache
-
-# Expose app port
 EXPOSE 8080
 ENV PORT=8080
 
-# Copy wait script
 COPY wait-for-db.sh /app/wait-for-db.sh
 RUN chmod +x /app/wait-for-db.sh
 
-# Start the app
 CMD ["/app/wait-for-db.sh"]
