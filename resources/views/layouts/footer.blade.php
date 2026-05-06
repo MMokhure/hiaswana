@@ -103,7 +103,7 @@
     <!-- Copyright Bar -->
     <div class="footer-copyright-bar">
       <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <p class="mb-0">{{ setting('footer_copyright','© HIASWANA | ALL RIGHTS RESERVED') }} {{ date('Y') }}</p>
+        <p class="mb-0">{{ setting('footer_copyright','© HIASWANA | ALL RIGHTS RESERVED') }} {{ date('Y') }} &nbsp;·&nbsp; Developed by <a href="https://technikali-it.co.bw/" target="_blank" rel="noopener" style="color:#47C4F2;text-decoration:none;">Techni-Kali IT</a></p>
         <div class="footer-bottom-links">
           <a href="{{ url('/about') }}">About</a>
           <span>·</span>
