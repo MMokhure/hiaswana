@@ -15,20 +15,20 @@
               <!-- Statistics Overlay -->
               <div class="statistics-overlay">
                 <div class="stat-item">
-                  <div class="stat-number">10+</div>
-                  <div class="stat-label">YEARS</div>
+                  <div class="stat-number">{{ setting('about_stat1_number','10+') }}</div>
+                  <div class="stat-label">{{ setting('about_stat1_label','YEARS') }}</div>
                 </div>
                 <div class="stat-item">
-                  <div class="stat-number">270+</div>
-                  <div class="stat-label">MEMBERS</div>
+                  <div class="stat-number">{{ setting('about_stat2_number','270+') }}</div>
+                  <div class="stat-label">{{ setting('about_stat2_label','MEMBERS') }}</div>
                 </div>
                 <div class="stat-item">
-                  <div class="stat-number">89</div>
-                  <div class="stat-label">PROJECTS</div>
+                  <div class="stat-number">{{ setting('about_stat3_number','89') }}</div>
+                  <div class="stat-label">{{ setting('about_stat3_label','PROJECTS') }}</div>
                 </div>
                 <div class="stat-item">
-                  <div class="stat-number">53+</div>
-                  <div class="stat-label">EVENTS</div>
+                  <div class="stat-number">{{ setting('about_stat4_number','53+') }}</div>
+                  <div class="stat-label">{{ setting('about_stat4_label','EVENTS') }}</div>
                 </div>
               </div>
 
@@ -45,47 +45,31 @@
           <!-- Content Column -->
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
             <div class="about-content-new">
-              <div class="about-subheading">ABOUT US</div>
+              <div class="about-subheading">{{ setting('about_subheading','ABOUT US') }}</div>
               
               <h2 class="about-heading-new">
-                Our Work Promise To Uphold The Trust Placed
+                {{ setting('about_heading','Our Work Promise To Uphold The Trust Placed') }}
               </h2>
               
               <p class="about-description-new">
-                We are a multidisciplinary community of health professionals, ICT experts, researchers, and students dedicated to
-                advancing biomedical and health informatics in Botswana and the region. Inspired by global bodies such as the
-                International Medical Informatics Association (IMIA) and the Pan‑African Health Informatics Association (HELINA),
-                we promote the safe, ethical, and effective use of information and communication technologies to improve health
-                for all.
+                {{ setting('about_description') }}
               </p>
 
               <!-- Checkmarked List -->
               <ul class="about-checklist">
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>Health Informatics Leadership & Advocacy</span>
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>Capacity Building & Professional Development</span>
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>Research & Innovation in Digital Health</span>
-                </li>
-                <li>
-                  <i class="bi bi-check-circle-fill"></i>
-                  <span>Collaboration & Knowledge Sharing</span>
-                </li>
+                <li><i class="bi bi-check-circle-fill"></i><span>{{ setting('about_check1','Health Informatics Leadership & Advocacy') }}</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>{{ setting('about_check2','Capacity Building & Professional Development') }}</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>{{ setting('about_check3','Research & Innovation in Digital Health') }}</span></li>
+                <li><i class="bi bi-check-circle-fill"></i><span>{{ setting('about_check4','Collaboration & Knowledge Sharing') }}</span></li>
               </ul>
 
               <!-- Experience Badge and CTA -->
               <div class="about-cta-section">
                 <div class="experience-badge-new">
-                  <div class="badge-number">10+</div>
+                  <div class="badge-number">{{ setting('about_badge_number','10+') }}</div>
                   <div class="badge-text">
-                    <div>YEARS</div>
-                    <div>OF EXPERIENCE</div>
+                    <div>{{ setting('about_badge_line1','YEARS') }}</div>
+                    <div>{{ setting('about_badge_line2','OF EXPERIENCE') }}</div>
                   </div>
                 </div>
                 <a href="{{ url('/about') }}" class="btn-learn-more">

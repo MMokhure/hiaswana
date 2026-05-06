@@ -6,8 +6,8 @@
   <div class="container mt-5 py-5">
     <div class="row align-items-center">
       <div class="col-lg-7">
-        <h1 class="display-5">HIASWANA</h1>
-        <p class="lead">First Health informatics Association in Botswana.</p>
+        <h1 class="display-5">{{ setting('page_about_title','HIASWANA') }}</h1>
+        <p class="lead">{{ setting('page_about_subtitle','First Health informatics Association in Botswana.') }}</p>
         <div class="mt-4">
           <a href="{{ url('/#appointment') }}" id="appointment-btn" class="btn me-2 rounded-pill ">Book Appointment</a>
           <a href="{{ url('/services') }}" class="btn btn-outline rounded-pill">Our Services</a>
@@ -25,7 +25,7 @@
     <div class="row gy-5 align-items-center">
       <div class="col-lg-6" data-aos="fade-right">
         <h2>Our Mission</h2>
-        <p>To restore mobility and quality of life through evidence-based, non-invasive spinal rehabilitation and ongoing patient education.</p>
+        <p>{{ setting('page_about_mission','To advance health informatics and digital health in Botswana through education, advocacy, research, and collaboration.') }}</p>
 
         <h3 class="mt-4">Our Approach</h3>
         <div class="row g-3 pillars">

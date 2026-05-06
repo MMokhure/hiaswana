@@ -5,10 +5,9 @@
   <div class="container mt-5 py-5">
     <div class="row align-items-center">
       <div class="col-lg-8">
-        <h1 class="display-5 fw-bold mb-3">Join HIASWANA</h1>
+        <h1 class="display-5 fw-bold mb-3">{{ setting('page_membership_title','Join HIASWANA') }}</h1>
         <p class="lead">
-          Connect with a growing community of health informatics professionals, students, and partners
-          shaping digital health in Botswana.
+          {{ setting('page_membership_subtitle','Connect with a growing community of health informatics professionals, students, and partners shaping digital health in Botswana.') }}
         </p>
       </div>
     </div>
@@ -137,17 +136,31 @@
             <p class="form-subtitle">Complete this form to apply. HIASWANA will review your application and contact you with next steps.</p>
           </div>
 
+          @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          @endif
+
+          @if($errors->any())
+            <div class="alert alert-danger">
+              <ul class="mb-0">@foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach</ul>
+            </div>
+          @endif
+
           <div class="membership-form-card">
-            <form action="#" method="post" enctype="multipart/form-data" class="membership-form">
+            <form action="{{ route('membership.store') }}" method="POST" class="membership-form">
               @csrf
-              
+
               <div class="row g-4">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="full_name" class="form-label">
+                    <label for="name" class="form-label">
                       <i class="bi bi-person"></i> Full Name <span class="required">*</span>
                     </label>
-                    <input type="text" id="full_name" name="full_name" class="form-control" required placeholder="Enter your full name">
+                    <input type="text" id="name" name="name" class="form-control" required
+                           value="{{ old('name') }}" placeholder="Enter your full name">
                   </div>
                 </div>
 
@@ -156,7 +169,18 @@
                     <label for="email" class="form-label">
                       <i class="bi bi-envelope"></i> Email Address <span class="required">*</span>
                     </label>
-                    <input type="email" id="email" name="email" class="form-control" required placeholder="your.email@example.com">
+                    <input type="email" id="email" name="email" class="form-control" required
+                           value="{{ old('email') }}" placeholder="your.email@example.com">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="phone" class="form-label">
+                      <i class="bi bi-telephone"></i> Phone Number
+                    </label>
+                    <input type="text" id="phone" name="phone" class="form-control"
+                           value="{{ old('phone') }}" placeholder="+267 xxxxxxxx">
                   </div>
                 </div>
 
@@ -165,7 +189,8 @@
                     <label for="organisation" class="form-label">
                       <i class="bi bi-building"></i> Organisation / Institution
                     </label>
-                    <input type="text" id="organisation" name="organisation" class="form-control" placeholder="Your organization name">
+                    <input type="text" id="organisation" name="organization" class="form-control"
+                           value="{{ old('organization') }}" placeholder="Your organization name">
                   </div>
                 </div>
 
@@ -176,9 +201,9 @@
                     </label>
                     <select id="category" name="category" class="form-select" required>
                       <option value="">Select a category</option>
-                      <option value="individual">Individual Professional</option>
-                      <option value="student">Student / Early Career</option>
-                      <option value="institutional">Institutional / Organisational</option>
+                      @foreach(['Professional', 'Student', 'Associate', 'Institutional'] as $cat)
+                        <option value="{{ $cat }}" {{ old('category') === $cat ? 'selected' : '' }}>{{ $cat }}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>
@@ -188,17 +213,8 @@
                     <label for="motivation" class="form-label">
                       <i class="bi bi-card-text"></i> Motivation / Areas of Interest
                     </label>
-                    <textarea id="motivation" name="motivation" rows="4" class="form-control" placeholder="Briefly describe your interest in health informatics and HIASWANA, and what you hope to contribute or gain from membership."></textarea>
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <div class="form-group">
-                    <label for="supporting_doc" class="form-label">
-                      <i class="bi bi-file-earmark-arrow-up"></i> Upload Supporting Document (Optional)
-                    </label>
-                    <input type="file" id="supporting_doc" name="supporting_doc" class="form-control">
-                    <small class="form-text">E.g. CV, short bio, or institutional letter of support (PDF, DOC, DOCX - Max 5MB)</small>
+                    <textarea id="motivation" name="motivation" rows="4" class="form-control"
+                              placeholder="Briefly describe your interest in health informatics and HIASWANA.">{{ old('motivation') }}</textarea>
                   </div>
                 </div>
 

@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>HIASWANA - Health Informatics Association of Botswana</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>{{ setting('site_name','HIASWANA') }} - {{ setting('site_tagline','Health Informatics Association of Botswana') }}</title>
+  <meta name="description" content="{{ setting('site_description') }}">
+  <meta name="keywords" content="health informatics, digital health, Botswana">
 
   <!-- Favicons -->
   <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">

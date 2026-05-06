@@ -6,8 +6,8 @@
                 <img src="{{ asset('assets/img/logo.png') }}" alt="HIASWANA - Health Informatics Association of Botswana logo" class="logo-img">
               </div>
               <div class="logo-text-wrapper d-none d-md-block">
-                <h4 class="sitename">HIASWANA</h4>
-                <span class="logo-tagline">Health Informatics Association</span>
+                <h4 class="sitename">{{ setting('site_name','HIASWANA') }}</h4>
+                <span class="logo-tagline">{{ setting('site_tagline','Health Informatics Association of Botswana') }}</span>
               </div>
           </a>
 
@@ -23,7 +23,7 @@
               <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
           </nav>
 
-          <a class="btn-getstarted" href="{{ url('/membership') }}">Join HIASWANA</a>
+          <a class="btn-getstarted" href="{{ url('/membership') }}">{{ setting('join_cta_label','Join HIASWANA') }}</a>
 
       </div>
   </header>

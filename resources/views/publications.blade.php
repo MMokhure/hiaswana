@@ -5,10 +5,9 @@
   <div class="container mt-5 py-5">
     <div class="row align-items-center">
       <div class="col-lg-7">
-        <h1 class="display-5">Publications</h1>
+        <h1 class="display-5">{{ setting('page_pubs_title','Publications') }}</h1>
         <p class="lead">
-          A space to showcase reports, guidelines, case studies, and research outputs related to health informatics and
-          digital health in Botswana.
+          {{ setting('page_pubs_subtitle','A space to showcase reports, guidelines, case studies, and research outputs related to health informatics and digital health in Botswana.') }}
         </p>
       </div>
     </div>
@@ -17,25 +16,31 @@
 
 <section class="section">
   <div class="container">
-    <h2>Featured Publications</h2>
-    <p class="muted">
-      Below is an example entry. You can extend this list with national digital health strategies, implementation guides,
-      and HIASWANA‑endorsed documents.
-    </p>
+    <h2>{{ setting('page_pubs_heading','Featured Publications') }}</h2>
 
     <div class="list-group mt-4">
-      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+      @forelse($publications as $pub)
+      <a href="{{ $pub->file_url ? (str_starts_with($pub->file_url, 'http') ? $pub->file_url : Storage::url($pub->file_url)) : '#' }}"
+         target="_blank"
+         class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
         <div class="ms-0 me-3">
-          <h5 class="mb-1">Sample: HIASWANA Brief on Health Informatics Capacity in Botswana</h5>
-          <p class="mb-1 text-muted">Published by HIASWANA – an example placeholder link that you can update with the real PDF or web page.</p>
-          <small>HIASWANA, 2025</small>
+          <h5 class="mb-1">{{ $pub->title }}</h5>
+          @if($pub->description)
+            <p class="mb-1 text-muted">{{ $pub->description }}</p>
+          @endif
+          <small>{{ $pub->author ? $pub->author . ', ' : '' }}{{ $pub->year }}</small>
         </div>
-        <span class="badge bg-primary rounded-pill align-self-center">PDF</span>
+        <span class="badge bg-primary rounded-pill align-self-center">{{ $pub->type }}</span>
       </a>
+      @empty
+      <div class="text-center py-5 text-muted">
+        <i class="bi bi-journal-x fs-1 d-block mb-3"></i>
+        No publications available yet.
+      </div>
+      @endforelse
     </div>
   </div>
 </section>
 
 @endsection
-
 

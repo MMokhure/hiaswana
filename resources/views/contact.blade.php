@@ -10,7 +10,7 @@
             <div class="contact-info-header">
               <h3>Contact Information</h3>
               <p>
-                We're here to help. Contact HIASWANA for membership, collaboration opportunities, or general enquiries — our team responds promptly during working hours.
+                {{ setting('contact_page_intro',"We're here to help. Contact HIASWANA for membership, collaboration opportunities, or general enquiries — our team responds promptly during working hours.") }}
               </p>
             </div>
 
@@ -21,8 +21,8 @@
                   </div>
                   <div class="card-content">
                     <h4>Our Location</h4>
-                    <p>Gaborone, Botswana</p>
-                    <p class="muted"><a href="https://www.google.com/maps?q=Gaborone,+Botswana" target="_blank" rel="noopener">View on map</a></p>
+                    <p>{{ setting('contact_address','Gaborone, Botswana') }}</p>
+                    <p class="muted"><a href="{{ setting('contact_map_url','https://www.google.com/maps?q=Gaborone,+Botswana') }}" target="_blank" rel="noopener">View on map</a></p>
                   </div>
                 </div>
 
@@ -32,7 +32,7 @@
                   </div>
                   <div class="card-content">
                     <h4>Email</h4>
-                    <p><a href="mailto:info@hiaswana.co.bw">info@hiaswana.co.bw</a></p>
+                    <p><a href="mailto:{{ setting('contact_email','info@hiaswana.co.bw') }}">{{ setting('contact_email','info@hiaswana.co.bw') }}</a></p>
                   </div>
                 </div>
 
@@ -42,7 +42,7 @@
                   </div>
                   <div class="card-content">
                     <h4>Call</h4>
-                    <p><a href="tel:+26771234567">+267 71 234 567</a></p>
+                    <p><a href="tel:{{ setting('contact_phone','+267 71 234 567') }}">{{ setting('contact_phone','+267 71 234 567') }}</a></p>
                   </div>
                 </div>
 
@@ -52,13 +52,13 @@
                   </div>
                   <div class="card-content">
                     <h4>Opening Hours</h4>
-                    <p>Mon–Sat: 8:00 AM – 5:00 PM</p>
+                    <p>{{ setting('contact_hours','Mon–Sat: 8:00 AM – 5:00 PM') }}</p>
                   </div>
                 </div>
             </div>
 
               <div class="map-embed mt-4">
-                <iframe title="Spinal Rehabilitation - Gaborone" src="https://www.google.com/maps?q=Gaborone,+Botswana&output=embed" style="border:0; width:100%; height:220px; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe title="{{ setting('site_name','HIASWANA') }}" src="{{ setting('contact_map_url','https://www.google.com/maps?q=Gaborone,+Botswana') }}&output=embed" style="border:0; width:100%; height:220px; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
               </div>
           </div>
 
