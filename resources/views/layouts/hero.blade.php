@@ -12,7 +12,7 @@
               <div class="row">
                 <div class="col-lg-7 col-md-10" data-aos="fade-up" data-aos-delay="100">
                   <div class="content-box">
-                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">{{ setting('hero_title','Building a Connected, Data‑Driven Health System') }}</h1>
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">{{ setting('hero_title','Building a Connected, Data-Driven Health System') }}</h1>
                     <p class="hero-description animated-text" data-aos="fade-up" data-aos-delay="250">
                       @foreach(explode(' ', setting('hero_description','We bring together clinicians, technologists, academics, and policymakers to strengthen digital health and health information systems across Botswana.')) as $word)
                         <span class="word-animate">{{ $word }}</span>
