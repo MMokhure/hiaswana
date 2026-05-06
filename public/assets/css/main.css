@@ -796,9 +796,10 @@ h6 {
 }
 
 .footer-logo-img {
-  height: 48px;
+  height: 64px;
   width: auto;
   object-fit: contain;
+  border-radius: 14px;
 }
 
 .footer-logo-text-fallback {
