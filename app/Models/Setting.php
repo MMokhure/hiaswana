@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Cache;
 
 class Setting extends Model
@@ -14,7 +15,12 @@ class Setting extends Model
      */
     public static function get(string $key, string $default = ''): string
     {
-        $settings = Cache::rememberForever('site_settings', fn () => static::pluck('value', 'key'));
+        try {
+            $settings = Cache::rememberForever('site_settings', fn () => static::pluck('value', 'key'));
+        } catch (QueryException $e) {
+            return $default;
+        }
+
         return $settings[$key] ?? $default;
     }
 

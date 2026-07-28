@@ -65,8 +65,8 @@
           <div class="contact-form-panel">
           
             <div class="form-container">
-              <h3>Send Us a Message</h3>
-              <p>If you have questions or need advice, send us a message and we'll reply within one business day.</p>
+              <h3>{{ setting('page_contact_form_heading','Send Us a Message') }}</h3>
+              <p>{{ setting('page_contact_form_subtext',"If you have questions or need advice, send us a message and we'll reply within one business day.") }}</p>
 
               <form action="forms/contact.php" method="post" class="php-email-form" aria-label="Contact form">
                 <div class="form-floating mb-3">

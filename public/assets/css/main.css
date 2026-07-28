@@ -1710,7 +1710,7 @@ section,
   color: #ffffff;
 }
 
-/* Hero slideshow and text animations */
+/* Hero slideshow - JavaScript-driven */
 .hero .slideshow {
   position: absolute;
   inset: 0;
@@ -1725,18 +1725,17 @@ section,
   opacity: 0;
   transform: scale(1.08);
   will-change: opacity, transform;
-  animation: slideAnim 18s linear infinite;
+  transition: opacity 1.2s ease-in-out, transform 6s ease-out;
 }
-.hero .slideshow .slide:nth-child(1) { animation-delay: 0s; }
-.hero .slideshow .slide:nth-child(2) { animation-delay: 6s; }
-.hero .slideshow .slide:nth-child(3) { animation-delay: 12s; }
-
-@keyframes slideAnim {
-  0% { opacity: 0; transform: scale(1.08); }
-  8% { opacity: 1; transform: scale(1.00); }
-  32% { opacity: 1; transform: scale(1.04); }
-  40% { opacity: 0; transform: scale(1.08); }
-  100% { opacity: 0; transform: scale(1.08); }
+.hero .slideshow .slide.active {
+  opacity: 1;
+  transform: scale(1.00);
+  z-index: 2;
+}
+.hero .slideshow .slide.leave {
+  opacity: 0;
+  transform: scale(1.08);
+  z-index: 1;
 }
 
 /* Text animations */
@@ -1790,7 +1789,8 @@ section,
 
 /* Respect user's reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .hero .slideshow .slide { animation: none; opacity: 1; transform: none; }
+  .hero .slideshow .slide { transition: none; }
+  .hero .slideshow .slide.active { opacity: 1; transform: none; }
   .hero .hero-content .content-box h1,
   .hero .hero-content .content-box p,
   .hero .hero-content .content-box .hero-description .word-animate { 
@@ -2066,6 +2066,7 @@ section,
   height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 1s ease-in-out;
   z-index: 1;

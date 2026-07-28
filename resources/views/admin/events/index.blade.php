@@ -40,6 +40,13 @@
             <a href="{{ route('admin.events.edit', $event) }}" class="btn btn-sm btn-outline-primary">
               <i class="bi bi-pencil"></i>
             </a>
+            <form method="POST" action="{{ route('admin.events.toggle', $event) }}" class="d-inline">
+              @csrf
+              <button class="btn btn-sm {{ $event->status === 'published' ? 'btn-outline-warning' : 'btn-outline-success' }}"
+                      title="{{ $event->status === 'published' ? 'Unpublish' : 'Publish' }}">
+                <i class="bi {{ $event->status === 'published' ? 'bi-eye-slash' : 'bi-eye' }}"></i>
+              </button>
+            </form>
             <form method="POST" action="{{ route('admin.events.destroy', $event) }}" class="d-inline"
                   onsubmit="return confirm('Delete this event?')">
               @csrf @method('DELETE')

@@ -6,10 +6,16 @@
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
             <div class="about-image-wrapper-new">
               <div class="about-image-frame-new about-slideshow">
-                <div class="about-slide active" data-bg="{{asset('assets/img/about3.jpeg')}}"></div>
-                <div class="about-slide" data-bg="{{asset('assets/img/bg-img.jpeg')}}"></div>
-                <div class="about-slide" data-bg="{{asset('assets/img/bgimg.jpeg')}}"></div>
-                <div class="about-slide" data-bg="{{asset('assets/img/about2.jpeg')}}"></div>
+                @if($aboutSlides->isNotEmpty())
+                  @foreach($aboutSlides as $i => $slide)
+                    <div class="about-slide {{ $i === 0 ? 'active' : '' }}" data-bg="{{ $slide->image_url }}" style="background-image: url('{{ $slide->image_url }}')"></div>
+                  @endforeach
+                @else
+                  <div class="about-slide active" data-bg="{{ asset('assets/img/about3.jpeg') }}" style="background-image: url('{{ asset('assets/img/about3.jpeg') }}')"></div>
+                  <div class="about-slide" data-bg="{{ asset('assets/img/bg-img.jpeg') }}" style="background-image: url('{{ asset('assets/img/bg-img.jpeg') }}')"></div>
+                  <div class="about-slide" data-bg="{{ asset('assets/img/bgimg.jpeg') }}" style="background-image: url('{{ asset('assets/img/bgimg.jpeg') }}')"></div>
+                  <div class="about-slide" data-bg="{{ asset('assets/img/about2.jpeg') }}" style="background-image: url('{{ asset('assets/img/about2.jpeg') }}')"></div>
+                @endif
               </div>
               
               <!-- Statistics Overlay -->
@@ -34,10 +40,10 @@
 
               <!-- Slideshow Indicators -->
               <div class="slideshow-indicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
-                <span class="indicator" data-slide="3"></span>
+                @php $slideCount = $aboutSlides->isNotEmpty() ? $aboutSlides->count() : 4; @endphp
+                @for($i = 0; $i < $slideCount; $i++)
+                  <span class="indicator {{ $i === 0 ? 'active' : '' }}" data-slide="{{ $i }}"></span>
+                @endfor
               </div>
             </div>
           </div>

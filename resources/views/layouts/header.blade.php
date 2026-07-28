@@ -3,7 +3,7 @@
 
           <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto me-xl-0">
               <div class="logo-wrapper">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="HIASWANA - Health Informatics Association of Botswana logo" class="logo-img">
+                <img src="{{ setting('site_logo') ? Storage::url(setting('site_logo')) : asset('assets/img/logo.png') }}" alt="HIASWANA - Health Informatics Association of Botswana logo" class="logo-img">
               </div>
               <div class="logo-text-wrapper d-none d-md-block">
                 <h4 class="sitename">{{ setting('site_name','HIASWANA') }}</h4>

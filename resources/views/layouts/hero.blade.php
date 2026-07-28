@@ -1,10 +1,16 @@
-<section id="hero" class="hero section dark-background">
+    <section id="hero" class="hero section dark-background">
       <div class="container-fluid p-0">
         <div class="hero-wrapper">
-          <div class="hero-image slideshow">
-            <div class="slide" data-bg="{{ asset('assets/img/bg-img.jpeg') }}" aria-hidden="true"></div>
-            <div class="slide" data-bg="{{ asset('assets/img/bgimg.jpeg') }}" aria-hidden="true"></div>
-            <div class="slide" data-bg="{{ asset('assets/img/about2.jpeg') }}" aria-hidden="true"></div>
+          <div class="hero-image slideshow" id="heroSlideshow">
+            @if($heroSlides->isNotEmpty())
+              @foreach($heroSlides as $slide)
+                <div class="slide" data-bg="{{ $slide->image_url }}" style="background-image: url('{{ $slide->image_url }}')" aria-hidden="true"></div>
+              @endforeach
+            @else
+              <div class="slide" data-bg="{{ asset('assets/img/bg-img.jpeg') }}" style="background-image: url('{{ asset('assets/img/bg-img.jpeg') }}')" aria-hidden="true"></div>
+              <div class="slide" data-bg="{{ asset('assets/img/bgimg.jpeg') }}" style="background-image: url('{{ asset('assets/img/bgimg.jpeg') }}')" aria-hidden="true"></div>
+              <div class="slide" data-bg="{{ asset('assets/img/about.jpeg') }}" style="background-image: url('{{ asset('assets/img/about.jpeg') }}')" aria-hidden="true"></div>
+            @endif
           </div>
 
           <div class="hero-content">
@@ -48,62 +54,9 @@
                   </div>
                 </div>
               </div>
-<!-- 
-              <div class="features-wrapper">
-                <div class="row gy-4">
-
-                  <div class="col-lg-4">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="450">
-                      <div class="feature-icon">
-                        <i class="bi bi-heart-pulse-fill"></i>
-                      </div>
-                      <div class="feature-text">
-                        <h3>Cardiology</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-4">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
-                      <div class="feature-icon">
-                        <i class="bi bi-lungs-fill"></i>
-                      </div>
-                      <div class="feature-text">
-                        <h3>Pulmonology</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-4">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="550">
-                      <div class="feature-icon">
-                        <i class="bi bi-capsule"></i>
-                      </div>
-                      <div class="feature-text">
-                        <h3>Diagnostics</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div> -->
 
             </div>
           </div>
         </div>
       </div>
-      <script>
-        // Set slide background images from data-bg attributes to avoid nested-quote issues
-        (function(){
-          try {
-            document.querySelectorAll('#hero .slide').forEach(function(s){
-              var bg = s.getAttribute('data-bg');
-              if(bg) s.style.backgroundImage = 'url("' + bg + '")';
-            });
-          } catch(e){ /* fail silently */ }
-        })();
-      </script>
     </section>

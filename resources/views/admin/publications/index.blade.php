@@ -40,6 +40,13 @@
             <a href="{{ route('admin.publications.edit', $pub) }}" class="btn btn-sm btn-outline-primary">
               <i class="bi bi-pencil"></i>
             </a>
+            <form method="POST" action="{{ route('admin.publications.toggle', $pub) }}" class="d-inline">
+              @csrf
+              <button class="btn btn-sm {{ $pub->status === 'published' ? 'btn-outline-warning' : 'btn-outline-success' }}"
+                      title="{{ $pub->status === 'published' ? 'Unpublish' : 'Publish' }}">
+                <i class="bi {{ $pub->status === 'published' ? 'bi-eye-slash' : 'bi-eye' }}"></i>
+              </button>
+            </form>
             <form method="POST" action="{{ route('admin.publications.destroy', $pub) }}" class="d-inline"
                   onsubmit="return confirm('Delete this publication?')">
               @csrf @method('DELETE')

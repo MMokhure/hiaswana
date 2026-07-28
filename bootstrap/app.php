@@ -16,5 +16,28 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (Throwable $e, $request) {
+            $status = 500;
+            if ($e instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface) {
+                $status = $e->getStatusCode();
+            } elseif ($e instanceof \Illuminate\Auth\AuthenticationException) {
+                $status = 401;
+            } elseif ($e instanceof \Illuminate\Auth\Access\AuthorizationException) {
+                $status = 403;
+            } elseif ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException || $e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+                $status = 404;
+            }
+
+            $views = [
+                403 => 'errors.403',
+                404 => 'errors.404',
+                500 => 'errors.500',
+            ];
+
+            if (view()->exists($views[$status] ?? null)) {
+                return response()->view($views[$status] ?? 'errors.generic', [], $status);
+            }
+
+            return null;
+        });
     })->create();

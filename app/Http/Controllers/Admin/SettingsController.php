@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
     private array $groups = [
         'general'  => 'General',
+        'media'    => 'Images & Branding',
         'contact'  => 'Contact & Location',
         'social'   => 'Social Media',
         'homepage' => 'Homepage',
@@ -42,10 +44,41 @@ class SettingsController extends Controller
             abort(404);
         }
 
-        $inputs = $request->except(['_token', '_method']);
+        // Collect image-type setting keys for this group
+        $imageKeys = Setting::where('group', $group)->where('type', 'image')->pluck('key')->toArray();
+
+        // Validate any uploaded images before saving anything
+        $imageValidation = [];
+        foreach ($imageKeys as $key) {
+            if ($request->hasFile($key)) {
+                $imageValidation[$key] = ['image', 'max:4096'];
+            }
+        }
+        if ($imageValidation) {
+            $request->validate($imageValidation);
+        }
+
+        // Save non-image inputs (skip image keys to avoid saving temp paths)
+        $inputs = $request->except(array_merge(['_token', '_method'], $imageKeys));
 
         foreach ($inputs as $key => $value) {
             Setting::where('key', $key)->update(['value' => $value ?? '']);
+        }
+
+        // Handle image uploads
+        foreach ($imageKeys as $key) {
+            if ($request->hasFile($key)) {
+                $file = $request->file($key);
+
+                // Delete old file
+                $old = Setting::where('key', $key)->value('value');
+                if ($old) {
+                    Storage::disk('public')->delete($old);
+                }
+
+                $path = $file->store('settings', 'public');
+                Setting::where('key', $key)->update(['value' => $path]);
+            }
         }
 
         Setting::flush();

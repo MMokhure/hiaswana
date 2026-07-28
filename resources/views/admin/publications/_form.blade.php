@@ -48,11 +48,13 @@
   </div>
   <div class="col-md-6">
     <label class="form-label fw-semibold">Upload File (PDF / Word)</label>
-    <input type="file" name="file" accept=".pdf,.doc,.docx" class="form-control @error('file') is-invalid @enderror">
+    <input type="file" name="file" accept=".pdf,.doc,.docx" class="form-control @error('file') is-invalid @enderror"
+           onchange="previewImage(this, 'pub-file-preview')">
     @if($publication?->file_url && !str_starts_with($publication->file_url, 'http'))
       <div class="form-text">Current: <a href="{{ Storage::url($publication->file_url) }}" target="_blank">view file</a></div>
     @endif
     @error('file')<div class="invalid-feedback">{{ $message }}</div>@enderror
+    <div id="pub-file-preview" class="mt-2"></div>
   </div>
 </div>
 

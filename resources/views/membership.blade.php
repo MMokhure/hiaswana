@@ -18,8 +18,8 @@
 <section class="section membership-benefits">
   <div class="container">
     <div class="membership-header text-center mb-5" data-aos="fade-up">
-      <h2 class="membership-section-title">Why Become a Member?</h2>
-      <p class="membership-section-subtitle">Join a vibrant community dedicated to advancing digital health</p>
+      <h2 class="membership-section-title">{{ setting('page_membership_benefits_heading','Why Become a Member?') }}</h2>
+      <p class="membership-section-subtitle">{{ setting('page_membership_benefits_subtitle','Join a vibrant community dedicated to advancing digital health') }}</p>
     </div>
 
     <div class="row g-4">
@@ -28,8 +28,8 @@
           <div class="benefit-icon">
             <i class="bi bi-mortarboard-fill"></i>
           </div>
-          <h3 class="benefit-title">Learning & Development</h3>
-          <p class="benefit-description">Access to workshops, training sessions, and communities of practice</p>
+          <h3 class="benefit-title">{{ setting('page_membership_benefit1_title','Learning & Development') }}</h3>
+          <p class="benefit-description">{{ setting('page_membership_benefit1_desc','Access to workshops, training sessions, and communities of practice') }}</p>
         </div>
       </div>
 
@@ -38,8 +38,8 @@
           <div class="benefit-icon">
             <i class="bi bi-people-fill"></i>
           </div>
-          <h3 class="benefit-title">Networking</h3>
-          <p class="benefit-description">Connect with peers across health, ICT, academia, and government</p>
+          <h3 class="benefit-title">{{ setting('page_membership_benefit2_title','Networking') }}</h3>
+          <p class="benefit-description">{{ setting('page_membership_benefit2_desc','Connect with peers across health, ICT, academia, and government') }}</p>
         </div>
       </div>
 
@@ -48,8 +48,8 @@
           <div class="benefit-icon">
             <i class="bi bi-briefcase-fill"></i>
           </div>
-          <h3 class="benefit-title">Career Opportunities</h3>
-          <p class="benefit-description">Contribute to working groups and national health informatics initiatives</p>
+          <h3 class="benefit-title">{{ setting('page_membership_benefit3_title','Career Opportunities') }}</h3>
+          <p class="benefit-description">{{ setting('page_membership_benefit3_desc','Contribute to working groups and national health informatics initiatives') }}</p>
         </div>
       </div>
 
@@ -58,8 +58,8 @@
           <div class="benefit-icon">
             <i class="bi bi-star-fill"></i>
           </div>
-          <h3 class="benefit-title">Visibility</h3>
-          <p class="benefit-description">Showcase your work and projects in health informatics</p>
+          <h3 class="benefit-title">{{ setting('page_membership_benefit4_title','Visibility') }}</h3>
+          <p class="benefit-description">{{ setting('page_membership_benefit4_desc','Showcase your work and projects in health informatics') }}</p>
         </div>
       </div>
     </div>
@@ -70,8 +70,8 @@
 <section class="section light-background membership-categories">
   <div class="container">
     <div class="membership-header text-center mb-5" data-aos="fade-up">
-      <h2 class="membership-section-title">Membership Categories</h2>
-      <p class="membership-section-subtitle">Choose the membership type that fits your profile</p>
+      <h2 class="membership-section-title">{{ setting('page_membership_categories_heading','Membership Categories') }}</h2>
+      <p class="membership-section-subtitle">{{ setting('page_membership_categories_subtitle','Choose the membership type that fits your profile') }}</p>
     </div>
 
     <div class="row g-4 justify-content-center">
@@ -80,8 +80,8 @@
           <div class="category-icon">
             <i class="bi bi-person-badge-fill"></i>
           </div>
-          <h3 class="category-title">Individual Professional</h3>
-          <p class="category-description">For health informatics professionals, clinicians, technologists, and researchers working in the field.</p>
+          <h3 class="category-title">{{ setting('page_membership_cat1_title','Individual Professional') }}</h3>
+          <p class="category-description">{{ setting('page_membership_cat1_desc','For health informatics professionals, clinicians, technologists, and researchers working in the field.') }}</p>
           <ul class="category-features">
             <li><i class="bi bi-check-circle-fill"></i> Full access to events</li>
             <li><i class="bi bi-check-circle-fill"></i> Networking opportunities</li>
@@ -96,8 +96,8 @@
           <div class="category-icon">
             <i class="bi bi-mortarboard-fill"></i>
           </div>
-          <h3 class="category-title">Student / Early Career</h3>
-          <p class="category-description">For students and early-career professionals interested in health informatics and digital health.</p>
+          <h3 class="category-title">{{ setting('page_membership_cat2_title','Student / Early Career') }}</h3>
+          <p class="category-description">{{ setting('page_membership_cat2_desc','For students and early-career professionals interested in health informatics and digital health.') }}</p>
           <ul class="category-features">
             <li><i class="bi bi-check-circle-fill"></i> Reduced membership fees</li>
             <li><i class="bi bi-check-circle-fill"></i> Mentorship programs</li>
@@ -112,8 +112,8 @@
           <div class="category-icon">
             <i class="bi bi-building"></i>
           </div>
-          <h3 class="category-title">Institutional</h3>
-          <p class="category-description">For organizations, institutions, and companies supporting health informatics initiatives.</p>
+          <h3 class="category-title">{{ setting('page_membership_cat3_title','Institutional') }}</h3>
+          <p class="category-description">{{ setting('page_membership_cat3_desc','For organizations, institutions, and companies supporting health informatics initiatives.') }}</p>
           <ul class="category-features">
             <li><i class="bi bi-check-circle-fill"></i> Multiple member access</li>
             <li><i class="bi bi-check-circle-fill"></i> Partnership opportunities</li>
@@ -132,8 +132,8 @@
       <div class="col-lg-10">
         <div class="membership-form-wrapper" data-aos="fade-up">
           <div class="form-header text-center mb-4">
-            <h2 class="form-title">Apply for Membership</h2>
-            <p class="form-subtitle">Complete this form to apply. HIASWANA will review your application and contact you with next steps.</p>
+            <h2 class="form-title">{{ setting('page_membership_form_heading','Apply for Membership') }}</h2>
+            <p class="form-subtitle">{{ setting('page_membership_form_subtitle','Complete this form to apply. HIASWANA will review your application and contact you with next steps.') }}</p>
           </div>
 
           @if(session('success'))
@@ -150,40 +150,102 @@
           @endif
 
           <div class="membership-form-card">
-            <form action="{{ route('membership.store') }}" method="POST" class="membership-form">
+            <form action="{{ route('membership.store') }}" method="POST" class="membership-form" enctype="multipart/form-data">
               @csrf
 
               <div class="row g-4">
+                {{-- Name & Surname --}}
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="name" class="form-label">
-                      <i class="bi bi-person"></i> Full Name <span class="required">*</span>
+                      <i class="bi bi-person"></i> First Name <span class="required">*</span>
                     </label>
-                    <input type="text" id="name" name="name" class="form-control" required
-                           value="{{ old('name') }}" placeholder="Enter your full name">
+                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" required
+                           value="{{ old('name') }}" placeholder="First name">
+                    @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="surname" class="form-label">
+                      <i class="bi bi-person"></i> Surname <span class="required">*</span>
+                    </label>
+                    <input type="text" id="surname" name="surname" class="form-control @error('surname') is-invalid @enderror" required
+                           value="{{ old('surname') }}" placeholder="Last name">
+                    @error('surname')<div class="invalid-feedback">{{ $message }}</div>@enderror
                   </div>
                 </div>
 
+                {{-- ID Number & Nationality --}}
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="identification_number" class="form-label">
+                      <i class="bi bi-credit-card-2-front"></i> Identification Number <span class="required">*</span>
+                    </label>
+                    <input type="text" id="identification_number" name="identification_number"
+                           class="form-control @error('identification_number') is-invalid @enderror" required
+                           value="{{ old('identification_number') }}" placeholder="National ID or Passport number">
+                    @error('identification_number')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nationality" class="form-label">
+                      <i class="bi bi-globe"></i> Nationality <span class="required">*</span>
+                    </label>
+                    <input type="text" id="nationality" name="nationality"
+                           class="form-control @error('nationality') is-invalid @enderror" required
+                           value="{{ old('nationality') }}" placeholder="e.g. Motswana">
+                    @error('nationality')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                  </div>
+                </div>
+
+                {{-- Addresses --}}
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="residential_address" class="form-label">
+                      <i class="bi bi-house"></i> Residential Address <span class="required">*</span>
+                    </label>
+                    <textarea id="residential_address" name="residential_address" rows="2"
+                              class="form-control @error('residential_address') is-invalid @enderror" required
+                              placeholder="Street, city, district">{{ old('residential_address') }}</textarea>
+                    @error('residential_address')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="postal_address" class="form-label">
+                      <i class="bi bi-mailbox"></i> Postal Address
+                    </label>
+                    <textarea id="postal_address" name="postal_address" rows="2"
+                              class="form-control"
+                              placeholder="P.O. Box or postal address">{{ old('postal_address') }}</textarea>
+                  </div>
+                </div>
+
+                {{-- Contact Number & Email --}}
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="phone" class="form-label">
+                      <i class="bi bi-telephone"></i> Contact Number <span class="required">*</span>
+                    </label>
+                    <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" required
+                           value="{{ old('phone') }}" placeholder="+267 xxxxxxxx">
+                    @error('phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                  </div>
+                </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="email" class="form-label">
                       <i class="bi bi-envelope"></i> Email Address <span class="required">*</span>
                     </label>
-                    <input type="email" id="email" name="email" class="form-control" required
+                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" required
                            value="{{ old('email') }}" placeholder="your.email@example.com">
+                    @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
                   </div>
                 </div>
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="phone" class="form-label">
-                      <i class="bi bi-telephone"></i> Phone Number
-                    </label>
-                    <input type="text" id="phone" name="phone" class="form-control"
-                           value="{{ old('phone') }}" placeholder="+267 xxxxxxxx">
-                  </div>
-                </div>
-
+                {{-- Organisation & Category --}}
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="organisation" class="form-label">
@@ -193,7 +255,6 @@
                            value="{{ old('organization') }}" placeholder="Your organization name">
                   </div>
                 </div>
-
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="category" class="form-label">
@@ -225,11 +286,18 @@
                       <strong>Membership Fee Payment</strong>
                     </div>
                     <p class="payment-info-text">
-                      After submitting this form, HIASWANA will email you payment details (bank transfer / mobile money) and confirm your membership once payment is received.
+                      {{ setting('page_membership_payment_info','After submitting this form, HIASWANA will email you payment details (bank transfer / mobile money) and confirm your membership once payment is received.') }}
                     </p>
-                    <button type="button" class="btn-payment-disabled" disabled>
-                      <i class="bi bi-lock"></i> Pay membership fee (coming soon)
-                    </button>
+                    <div class="payment-upload-section mt-3">
+                      <label for="payment_proof" class="form-label fw-semibold">
+                        <i class="bi bi-upload"></i> Upload Proof of Payment (optional)
+                      </label>
+                      <input type="file" id="payment_proof" name="payment_proof"
+                             class="form-control @error('payment_proof') is-invalid @enderror"
+                             accept=".jpg,.jpeg,.png,.pdf">
+                      <div class="form-text">Accepted formats: JPG, PNG, PDF (max 5MB). If you have already paid, upload your payment receipt here.</div>
+                      @error('payment_proof')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
                   </div>
                 </div>
 

@@ -70,6 +70,13 @@ class EventController extends Controller
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully.');
     }
 
+    public function toggle(Event $event)
+    {
+        $event->update(['status' => $event->status === 'published' ? 'draft' : 'published']);
+        $label = $event->status === 'published' ? 'published' : 'unpublished (draft)';
+        return back()->with('success', "Event {$label}.");
+    }
+
     public function destroy(Event $event)
     {
         if ($event->image) {

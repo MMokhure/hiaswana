@@ -10,13 +10,24 @@ class MembershipController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'         => ['required', 'string', 'max:255'],
-            'email'        => ['required', 'email', 'unique:members,email'],
-            'phone'        => ['nullable', 'string', 'max:30'],
-            'organization' => ['nullable', 'string', 'max:255'],
-            'category'     => ['required', 'in:Professional,Student,Associate,Institutional'],
-            'motivation'   => ['nullable', 'string', 'max:1000'],
+            'name'                  => ['required', 'string', 'max:255'],
+            'surname'               => ['required', 'string', 'max:255'],
+            'identification_number' => ['required', 'string', 'max:100'],
+            'nationality'           => ['required', 'string', 'max:100'],
+            'residential_address'   => ['required', 'string', 'max:500'],
+            'postal_address'        => ['nullable', 'string', 'max:500'],
+            'email'                 => ['required', 'email', 'unique:members,email'],
+            'phone'                 => ['required', 'string', 'max:30'],
+            'organization'          => ['nullable', 'string', 'max:255'],
+            'category'              => ['required', 'in:Professional,Student,Associate,Institutional'],
+            'motivation'            => ['nullable', 'string', 'max:1000'],
+            'payment_proof'         => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
         ]);
+
+        if ($request->hasFile('payment_proof')) {
+            $data['payment_proof'] = $request->file('payment_proof')->store('payment-proofs', 'public');
+            $data['payment_status'] = 'pending_verification';
+        }
 
         Member::create($data);
 

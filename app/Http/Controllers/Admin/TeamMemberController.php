@@ -28,11 +28,14 @@ class TeamMemberController extends Controller
             'bio'        => ['nullable', 'string'],
             'photo'      => ['nullable', 'image', 'max:2048'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
+            'is_active'  => ['nullable', 'boolean'],
         ]);
 
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('team', 'public');
         }
+
+        $data['is_active'] = $request->boolean('is_active', true);
 
         TeamMember::create($data);
 
@@ -52,6 +55,7 @@ class TeamMemberController extends Controller
             'bio'        => ['nullable', 'string'],
             'photo'      => ['nullable', 'image', 'max:2048'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
+            'is_active'  => ['nullable', 'boolean'],
         ]);
 
         if ($request->hasFile('photo')) {
@@ -61,9 +65,18 @@ class TeamMemberController extends Controller
             $data['photo'] = $request->file('photo')->store('team', 'public');
         }
 
+        $data['is_active'] = $request->boolean('is_active', $team->is_active);
+
         $team->update($data);
 
         return redirect()->route('admin.team.index')->with('success', 'Team member updated successfully.');
+    }
+
+    public function toggle(TeamMember $team)
+    {
+        $team->update(['is_active' => !$team->is_active]);
+        $status = $team->is_active ? 'visible on site' : 'hidden from site';
+        return back()->with('success', "Team member {$status}.");
     }
 
     public function destroy(TeamMember $team)

@@ -9,4 +9,4 @@
   <script src="<?php echo e(asset('assets/vendor/glightbox/js/glightbox.min.js')); ?>"></script>
 
   <!-- Main JS File -->
-  <script src="<?php echo e(asset('assets/js/main.js')); ?>"></script>
+  <script src="<?php echo e(asset('assets/js/main.js')); ?>?v=<?php echo e(filemtime(public_path('assets/js/main.js'))); ?>"></script>

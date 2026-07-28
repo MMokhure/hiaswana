@@ -14,7 +14,8 @@
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-card-modern">
               <div class="service-card-image">
-                <img src="{{ asset('assets/img/about3.jpeg') }}" alt="{{ setting('service1_title','Capacity Building & Training') }}" class="img-fluid">
+                @php $img1 = setting('service1_image'); @endphp
+                <img src="{{ $img1 ? Storage::url($img1) : asset('assets/img/about3.jpeg') }}" alt="{{ setting('service1_title','Capacity Building & Training') }}" class="img-fluid">
               </div>
               <div class="service-card-content">
                 <h3 class="service-card-title">{{ setting('service1_title','Capacity Building & Training') }}</h3>
@@ -28,7 +29,8 @@
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="250">
             <div class="service-card-modern">
               <div class="service-card-image">
-                <img src="{{ asset('assets/img/bg-img.jpeg') }}" alt="{{ setting('service2_title','Standards & Interoperability') }}" class="img-fluid">
+                @php $img2 = setting('service2_image'); @endphp
+                <img src="{{ $img2 ? Storage::url($img2) : asset('assets/img/bg-img.jpeg') }}" alt="{{ setting('service2_title','Standards & Interoperability') }}" class="img-fluid">
               </div>
               <div class="service-card-content">
                 <h3 class="service-card-title">{{ setting('service2_title','Standards & Interoperability') }}</h3>
@@ -42,7 +44,8 @@
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-card-modern">
               <div class="service-card-image">
-                <img src="{{ asset('assets/img/bgimg.jpeg') }}" alt="{{ setting('service3_title','Research & Innovation') }}" class="img-fluid">
+                @php $img3 = setting('service3_image'); @endphp
+                <img src="{{ $img3 ? Storage::url($img3) : asset('assets/img/bgimg.jpeg') }}" alt="{{ setting('service3_title','Research & Innovation') }}" class="img-fluid">
               </div>
               <div class="service-card-content">
                 <h3 class="service-card-title">{{ setting('service3_title','Research & Innovation') }}</h3>
@@ -56,7 +59,8 @@
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="350">
             <div class="service-card-modern">
               <div class="service-card-image">
-                <img src="{{ asset('assets/img/about2.jpeg') }}" alt="{{ setting('service4_title','Policy & Advocacy') }}" class="img-fluid">
+                @php $img4 = setting('service4_image'); @endphp
+                <img src="{{ $img4 ? Storage::url($img4) : asset('assets/img/about2.jpeg') }}" alt="{{ setting('service4_title','Policy & Advocacy') }}" class="img-fluid">
               </div>
               <div class="service-card-content">
                 <h3 class="service-card-title">{{ setting('service4_title','Policy & Advocacy') }}</h3>

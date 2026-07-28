@@ -6,11 +6,12 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>{{ setting('site_name','HIASWANA') }} - {{ setting('site_tagline','Health Informatics Association of Botswana') }}</title>
   <meta name="description" content="{{ setting('site_description') }}">
-  <meta name="keywords" content="health informatics, digital health, Botswana">
+  <meta name="keywords" content="{{ setting('site_keywords','health informatics, digital health, Botswana') }}">
 
   <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  @php $favicon = setting('site_favicon'); @endphp
+  <link href="{{ $favicon ? Storage::url($favicon) : asset('assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ $favicon ? Storage::url($favicon) : asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">

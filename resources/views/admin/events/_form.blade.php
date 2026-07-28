@@ -56,6 +56,8 @@
       <small class="text-muted ms-2">Current image</small>
     </div>
   @endif
-  <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror">
+  <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror"
+         onchange="previewImage(this, 'event-image-preview')">
+  <div id="event-image-preview" class="mt-2"></div>
   @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
 </div>

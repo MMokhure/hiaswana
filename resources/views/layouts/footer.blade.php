@@ -9,7 +9,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="footer-brand">
               <div class="footer-logo">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="{{ setting('site_name','HIASWANA') }}" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <img src="{{ setting('site_logo') ? Storage::url(setting('site_logo')) : asset('assets/img/logo.png') }}" alt="{{ setting('site_name','HIASWANA') }}" class="footer-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                 <div class="footer-logo-text-fallback" style="display:none;">
                   <span class="footer-logo-abbr">{{ setting('site_name','HIASWANA') }}</span>
                 </div>
@@ -96,7 +96,7 @@
     <!-- Tagline Band -->
     <div class="footer-tagline-band">
       <div class="container">
-        <p class="footer-tagline-main">{{ setting('footer_tagline','ADVANCING DIGITAL HEALTH & HEALTH INFORMATICS IN BOTSWANA ❤️') }}</p>
+        <p class="footer-tagline-main">{{ setting('footer_tagline','ADVANCING DIGITAL HEALTH & HEALTH INFORMATICS IN BOTSWANA') }}</p>
       </div>
     </div>
 

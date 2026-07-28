@@ -18,6 +18,7 @@
           <th>Name</th>
           <th>Role</th>
           <th>Order</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -37,9 +38,23 @@
           <td>{{ $member->role }}</td>
           <td>{{ $member->sort_order }}</td>
           <td>
+            @if($member->is_active)
+              <span class="badge bg-success">Active</span>
+            @else
+              <span class="badge bg-secondary">Hidden</span>
+            @endif
+          </td>
+          <td>
             <a href="{{ route('admin.team.edit', $member) }}" class="btn btn-sm btn-outline-primary">
               <i class="bi bi-pencil"></i>
             </a>
+            <form method="POST" action="{{ route('admin.team.toggle', $member) }}" class="d-inline">
+              @csrf
+              <button class="btn btn-sm {{ $member->is_active ? 'btn-outline-warning' : 'btn-outline-success' }}"
+                      title="{{ $member->is_active ? 'Hide from site' : 'Show on site' }}">
+                <i class="bi {{ $member->is_active ? 'bi-eye-slash' : 'bi-eye' }}"></i>
+              </button>
+            </form>
             <form method="POST" action="{{ route('admin.team.destroy', $member) }}" class="d-inline"
                   onsubmit="return confirm('Delete this team member?')">
               @csrf @method('DELETE')
@@ -48,7 +63,7 @@
           </td>
         </tr>
         @empty
-        <tr><td colspan="5" class="text-center py-4 text-muted">No team members yet. <a href="{{ route('admin.team.create') }}">Add one</a>.</td></tr>
+        <tr><td colspan="6" class="text-center py-4 text-muted">No team members yet. <a href="{{ route('admin.team.create') }}">Add one</a>.</td></tr>
         @endforelse
       </tbody>
     </table>

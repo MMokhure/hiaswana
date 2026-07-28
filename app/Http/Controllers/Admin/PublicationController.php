@@ -74,6 +74,13 @@ class PublicationController extends Controller
         return redirect()->route('admin.publications.index')->with('success', 'Publication updated successfully.');
     }
 
+    public function toggle(Publication $publication)
+    {
+        $publication->update(['status' => $publication->status === 'published' ? 'draft' : 'published']);
+        $label = $publication->status === 'published' ? 'published' : 'unpublished (draft)';
+        return back()->with('success', "Publication {$label}.");
+    }
+
     public function destroy(Publication $publication)
     {
         if ($publication->file_url && !str_starts_with($publication->file_url, 'http')) {

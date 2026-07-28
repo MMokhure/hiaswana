@@ -26,5 +26,10 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call(SettingsSeeder::class);
+        $this->call(PublicationSeeder::class);
+        $this->call(SlideSeeder::class);
+        $this->call(TeamMemberSeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(CommitteeSeeder::class);
     }
 }

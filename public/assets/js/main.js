@@ -248,6 +248,82 @@
 
 })();
 
+/**
+ * Hero Section Slideshow - JavaScript-driven (supports any number of slides)
+ */
+(function() {
+  'use strict';
+
+  const heroSlideshow = document.querySelector('#heroSlideshow');
+  if (!heroSlideshow) return;
+
+  const slides = heroSlideshow.querySelectorAll('.slide');
+  if (slides.length === 0) return;
+
+  // Fallback: apply backgrounds from data-bg when not set inline
+  slides.forEach((slide) => {
+    if (slide.style.backgroundImage) return;
+    const bg = slide.getAttribute('data-bg');
+    if (bg) slide.style.backgroundImage = 'url("' + bg + '")';
+  });
+
+  if (slides.length < 2) {
+    slides[0].classList.add('active');
+    return;
+  }
+
+  let currentSlide = 0;
+  let slideInterval;
+
+  function showSlide(index) {
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+      slide.classList.remove('leave');
+    });
+
+    const current = slides[index];
+    const prev = slides[(index - 1 + slides.length) % slides.length];
+
+    if (current) {
+      current.classList.add('active');
+    }
+    if (prev) {
+      prev.classList.add('leave');
+      // Remove leave class after transition
+      setTimeout(function() {
+        prev.classList.remove('leave');
+      }, 1200);
+    }
+
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % slides.length;
+    showSlide(next);
+  }
+
+  function startSlideshow() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
+  }
+
+  function stopSlideshow() {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+      slideInterval = null;
+    }
+  }
+
+  // Initialize
+  showSlide(0);
+  startSlideshow();
+
+  // Pause on hover
+  heroSlideshow.addEventListener('mouseenter', stopSlideshow);
+  heroSlideshow.addEventListener('mouseleave', startSlideshow);
+})();
+
 /* Ensure hero background video auto-plays and loops reliably */
 (function() {
   try {
@@ -293,12 +369,11 @@
   let currentSlide = 0;
   let slideInterval;
 
-  // Set background images from data-bg attributes
+  // Fallback: apply backgrounds from data-bg when not set inline
   slides.forEach((slide) => {
+    if (slide.style.backgroundImage) return;
     const bg = slide.getAttribute('data-bg');
-    if (bg) {
-      slide.style.backgroundImage = 'url("' + bg + '")';
-    }
+    if (bg) slide.style.backgroundImage = 'url("' + bg + '")';
   });
 
   function showSlide(index) {
