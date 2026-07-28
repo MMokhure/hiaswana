@@ -132,6 +132,9 @@ class CommitteeController extends Controller
         if ($request->hasFile('photo')) {
             if ($member->photo) Storage::disk('public')->delete($member->photo);
             $data['photo'] = $request->file('photo')->store('committees', 'public');
+        } elseif ($request->boolean('remove_photo')) {
+            if ($member->photo) Storage::disk('public')->delete($member->photo);
+            $data['photo'] = null;
         }
 
         $data['sort_order'] = $data['sort_order'] ?? $member->sort_order;

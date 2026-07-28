@@ -71,6 +71,12 @@
           @endif
           <input type="file" name="photo" accept="image/*"
                  class="form-control @error('photo') is-invalid @enderror">
+          @if($editing && $member->photo)
+            <div class="form-check mt-2">
+              <input class="form-check-input" type="checkbox" name="remove_photo" id="remove_committee_photo" value="1">
+              <label class="form-check-label" for="remove_committee_photo">Remove current photo</label>
+            </div>
+          @endif
           @error('photo')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
         <div class="col-md-4">

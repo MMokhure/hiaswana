@@ -59,5 +59,11 @@
   <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror"
          onchange="previewImage(this, 'event-image-preview')">
   <div id="event-image-preview" class="mt-2"></div>
+  @if($event?->image)
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" name="remove_image" id="remove_event_image" value="1">
+      <label class="form-check-label" for="remove_event_image">Remove current image</label>
+    </div>
+  @endif
   @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
 </div>

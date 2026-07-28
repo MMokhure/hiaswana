@@ -63,6 +63,11 @@ class TeamMemberController extends Controller
                 Storage::disk('public')->delete($team->photo);
             }
             $data['photo'] = $request->file('photo')->store('team', 'public');
+        } elseif ($request->boolean('remove_photo')) {
+            if ($team->photo) {
+                Storage::disk('public')->delete($team->photo);
+            }
+            $data['photo'] = null;
         }
 
         $data['is_active'] = $request->boolean('is_active', $team->is_active);

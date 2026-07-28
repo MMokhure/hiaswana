@@ -57,8 +57,15 @@ class SlideController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($slide->image_path);
+            if ($slide->image_path) {
+                Storage::disk('public')->delete($slide->image_path);
+            }
             $data['image_path'] = $request->file('image')->store('slides', 'public');
+        } elseif ($request->boolean('remove_image')) {
+            if ($slide->image_path) {
+                Storage::disk('public')->delete($slide->image_path);
+            }
+            $data['image_path'] = null;
         }
 
         $data['is_active'] = $request->boolean('is_active', true);

@@ -49,6 +49,12 @@
   @endif
   <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror"
          {{ !$slide ? 'required' : '' }} id="imageInput">
+  @if($slide?->image_path)
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" name="remove_image" id="remove_slide_image" value="1">
+      <label class="form-check-label" for="remove_slide_image">Remove current image</label>
+    </div>
+  @endif
   <div class="form-text">Recommended: 1920×1080px, JPG/PNG/WEBP, max 4 MB</div>
   @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
   <div id="imagePreview" class="mt-2" style="display:none">
