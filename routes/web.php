@@ -71,6 +71,10 @@ Route::post('/membership', [MembershipController::class, 'store'])
     ->middleware('throttle:membership-submit')
     ->name('membership.store');
 
+Route::fallback(function () {
+    return redirect('/');
+});
+
 // ── Admin Auth ────────────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('login');
