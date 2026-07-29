@@ -71,10 +71,6 @@ Route::post('/membership', [MembershipController::class, 'store'])
     ->middleware('throttle:membership-submit')
     ->name('membership.store');
 
-Route::fallback(function () {
-    return redirect('/');
-});
-
 // ── Admin Auth ────────────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('login');
@@ -124,4 +120,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('settings/{group}', [SettingsController::class, 'group'])->name('settings.group');
         Route::put('settings/{group}', [SettingsController::class, 'update'])->name('settings.update');
     });
+});
+
+Route::fallback(function () {
+    return redirect('/');
 });
