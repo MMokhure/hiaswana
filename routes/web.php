@@ -89,8 +89,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('team/{team}/toggle', [TeamMemberController::class, 'toggle'])->name('team.toggle');
         Route::resource('publications', PublicationController::class)->except(['show']);
         Route::post('publications/{publication}/toggle', [PublicationController::class, 'toggle'])->name('publications.toggle');
-        Route::get('slides/{slide}', [SlideController::class, 'show'])->name('slides.show');
         Route::resource('slides', SlideController::class)->except(['show']);
+        Route::get('slides/{slide}', [SlideController::class, 'show'])->name('slides.show');
         Route::post('slides/{slide}/toggle', [SlideController::class, 'toggle'])->name('slides.toggle');
 
         // Committees
