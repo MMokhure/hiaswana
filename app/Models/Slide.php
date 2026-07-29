@@ -11,6 +11,23 @@ class Slide extends Model
 
     protected $casts = ['is_active' => 'boolean'];
 
+    protected function resolvePublicMediaUrl(?string $path, string $fallback = 'assets/img/bg-img.jpeg'): string
+    {
+        if (! $path) {
+            return asset($fallback);
+        }
+
+        if (str_starts_with($path, 'assets/') || str_starts_with($path, 'http')) {
+            return asset($path);
+        }
+
+        if (Storage::disk('public')->exists($path)) {
+            return Storage::disk('public')->url($path);
+        }
+
+        return asset($fallback);
+    }
+
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
@@ -19,14 +36,15 @@ class Slide extends Model
     public function getMediaUrlAttribute(): string
     {
         if ($this->video_path) {
-            return $this->video_path;
+            return $this->resolvePublicMediaUrl($this->video_path, 'assets/img/bg-img.jpeg');
         }
 
-        if (!$this->image_path) return asset('assets/img/bg-img.jpeg');
-        if (str_starts_with($this->image_path, 'assets/') || str_starts_with($this->image_path, 'http')) {
-            return asset($this->image_path);
-        }
-        return Storage::url($this->image_path);
+        return $this->resolvePublicMediaUrl($this->image_path, 'assets/img/bg-img.jpeg');
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        return $this->resolvePublicMediaUrl($this->image_path, 'assets/img/bg-img.jpeg');
     }
 
     public function getTypeAttribute(): string

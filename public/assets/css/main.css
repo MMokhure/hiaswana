@@ -1904,7 +1904,7 @@ section,
 }
 
 .border-hover-primary {
-  /* keep class for semantic use */
+  border-color: var(--accent-color);
 }
 
 .card.transition-hover.border-hover-primary:hover {
@@ -7388,7 +7388,6 @@ section,
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 .contact .form-container p {
