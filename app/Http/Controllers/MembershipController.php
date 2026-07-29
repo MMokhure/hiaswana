@@ -22,7 +22,15 @@ class MembershipController extends Controller
             'category'              => ['required', 'in:Professional,Student,Associate,Institutional'],
             'motivation'            => ['nullable', 'string', 'max:1000'],
             'payment_proof'         => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
+            'consent_privacy'       => ['accepted'],
+            'consent_terms'         => ['accepted'],
         ]);
+
+        $data['privacy_consent_at'] = now();
+        $data['terms_consent_at'] = now();
+        $data['consent_ip'] = $request->ip();
+
+        unset($data['consent_privacy'], $data['consent_terms']);
 
         if ($request->hasFile('payment_proof')) {
             $data['payment_proof'] = $request->file('payment_proof')->store('payment-proofs', 'public');

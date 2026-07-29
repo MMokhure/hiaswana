@@ -63,44 +63,24 @@
           </div>
 
           <div class="contact-form-panel">
-          
             <div class="form-container">
-              <h3>{{ setting('page_contact_form_heading','Send Us a Message') }}</h3>
-              <p>{{ setting('page_contact_form_subtext',"If you have questions or need advice, send us a message and we'll reply within one business day.") }}</p>
+              <h3>Send Us a Message</h3>
+              <p>If you have questions or need support, contact us directly and our team will reply as soon as possible.</p>
 
-              <form action="forms/contact.php" method="post" class="php-email-form" aria-label="Contact form">
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="nameInput" name="name" placeholder="Full name" required aria-required="true" aria-label="Full name">
-                  <label for="nameInput">Full name</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="Email address" required aria-required="true" aria-label="Email address">
-                  <label for="emailInput">Email address</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="subjectInput" name="subject" placeholder="Subject" aria-label="Subject">
-                  <label for="subjectInput">Subject (optional)</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                  <textarea class="form-control" id="messageInput" name="message" rows="5" placeholder="Your message" style="height: 150px" required aria-required="true" aria-label="Your message"></textarea>
-                  <label for="messageInput">Your message</label>
-                </div>
-
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-
-                <div class="d-grid justify-content-center">
-                  <button type="submit" class="btn-submit">Send Message <i class="bi bi-send-fill ms-2"></i></button>
-                </div>
-              </form>
+              <div class="d-grid gap-3">
+                <a href="mailto:{{ setting('contact_email','info@hiaswana.co.bw') }}" class="btn-submit text-center">
+                  Email Us <i class="bi bi-envelope-fill ms-2"></i>
+                </a>
+                <a href="tel:{{ setting('contact_phone','+267 71 234 567') }}" class="btn-submit text-center">
+                  Call Us <i class="bi bi-telephone-fill ms-2"></i>
+                </a>
+                <a href="{{ url('/membership') }}" class="btn-submit text-center">
+                  Apply for Membership <i class="bi bi-arrow-right-circle-fill ms-2"></i>
+                </a>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section><!-- /Contact Section -->

@@ -49,6 +49,7 @@
               <li><a href="{{ url('/events') }}"><i class="bi bi-chevron-right"></i> Workshops</a></li>
               <li><a href="{{ url('/events') }}"><i class="bi bi-chevron-right"></i> Webinars</a></li>
               <li><a href="{{ url('/events') }}"><i class="bi bi-chevron-right"></i> Conferences</a></li>
+              <li><a href="{{ route('newsletter') }}"><i class="bi bi-chevron-right"></i> Newsletter</a></li>
               <li><a href="{{ url('/membership') }}"><i class="bi bi-chevron-right"></i> Join HIASWANA</a></li>
             </ul>
           </div>
@@ -75,18 +76,6 @@
               </li>
             </ul>
 
-            <div class="footer-newsletter mt-4">
-              <h6 class="footer-newsletter-heading">{{ setting('footer_newsletter_heading','Stay Updated') }}</h6>
-              <p class="footer-newsletter-sub">{{ setting('footer_newsletter_sub','Get news and updates from HIASWANA in your inbox.') }}</p>
-              <form class="footer-newsletter-form" action="{{ url('/contact') }}" method="GET">
-                <div class="newsletter-input-group">
-                  <input type="email" name="email" placeholder="Your email address" class="newsletter-input" required>
-                  <button type="submit" class="newsletter-btn" aria-label="Subscribe">
-                    <i class="bi bi-send-fill"></i>
-                  </button>
-                </div>
-              </form>
-            </div>
           </div>
 
         </div>
@@ -110,6 +99,10 @@
           <a href="{{ url('/contact') }}">Contact</a>
           <span>·</span>
           <a href="{{ url('/membership') }}">Join Us</a>
+          <span>·</span>
+          <a href="{{ route('privacy') }}">Privacy</a>
+          <span>·</span>
+          <a href="{{ route('terms') }}">Terms of Use</a>
         </div>
       </div>
     </div>

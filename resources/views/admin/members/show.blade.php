@@ -84,6 +84,34 @@
         <p class="mb-0 text-muted">{{ $member->notes ?: 'No notes.' }}</p>
       </div>
     </div>
+
+    <div class="card border-0 shadow-sm mt-3">
+      <div class="card-header bg-white fw-semibold">Legal & Consent</div>
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-sm-5">Privacy Consent</dt>
+          <dd class="col-sm-7">
+            @if($member->privacy_consent_at)
+              <span class="badge bg-success">Given</span>
+              <small class="text-muted d-block mt-1">{{ $member->privacy_consent_at->format('M d, Y H:i') }}</small>
+            @else
+              <span class="badge bg-secondary">Not Recorded</span>
+            @endif
+          </dd>
+          <dt class="col-sm-5">Terms Consent</dt>
+          <dd class="col-sm-7">
+            @if($member->terms_consent_at)
+              <span class="badge bg-success">Given</span>
+              <small class="text-muted d-block mt-1">{{ $member->terms_consent_at->format('M d, Y H:i') }}</small>
+            @else
+              <span class="badge bg-secondary">Not Recorded</span>
+            @endif
+          </dd>
+          <dt class="col-sm-5">Consent IP</dt>
+          <dd class="col-sm-7">{{ $member->consent_ip ?: 'Not recorded' }}</dd>
+        </dl>
+      </div>
+    </div>
   </div>
 </div>
 

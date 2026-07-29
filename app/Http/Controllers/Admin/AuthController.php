@@ -26,7 +26,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             if (!Auth::user()->is_admin) {
                 Auth::logout();
-                return back()->withErrors(['email' => 'You do not have admin access.']);
+                return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
             }
             $request->session()->regenerate();
             return redirect()->intended(route('admin.dashboard'));

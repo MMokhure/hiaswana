@@ -61,6 +61,16 @@ class SettingsController extends Controller
         // Save non-image inputs (skip image keys to avoid saving temp paths)
         $inputs = $request->except(array_merge(['_token', '_method'], $imageKeys));
 
+        // Ensure checkbox/boolean settings persist as 0 when unchecked.
+        $booleanKeys = Setting::where('group', $group)
+            ->whereIn('type', ['checkbox', 'boolean'])
+            ->pluck('key')
+            ->toArray();
+
+        foreach ($booleanKeys as $key) {
+            $inputs[$key] = $request->has($key) ? '1' : '0';
+        }
+
         foreach ($inputs as $key => $value) {
             Setting::where('key', $key)->update(['value' => $value ?? '']);
         }

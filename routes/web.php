@@ -32,6 +32,9 @@ Route::get('/', function () {
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
 Route::view('/contact-us', 'contact'); // legacy
+Route::view('/newsletter', 'newsletter')->name('newsletter');
+Route::view('/privacy', 'privacy')->name('privacy');
+Route::view('/terms-of-use', 'terms')->name('terms');
 
 Route::get('/events', function () {
     try {
@@ -64,12 +67,16 @@ Route::get('/membership', function () {
     return view('membership');
 });
 
-Route::post('/membership', [MembershipController::class, 'store'])->name('membership.store');
+Route::post('/membership', [MembershipController::class, 'store'])
+    ->middleware('throttle:membership-submit')
+    ->name('membership.store');
 
 // ── Admin Auth ────────────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('login');
-    Route::post('login', [AuthController::class, 'login'])->name('login.post');
+    Route::post('login', [AuthController::class, 'login'])
+        ->middleware('throttle:admin-login')
+        ->name('login.post');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     // Protected admin routes
@@ -82,6 +89,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('team/{team}/toggle', [TeamMemberController::class, 'toggle'])->name('team.toggle');
         Route::resource('publications', PublicationController::class)->except(['show']);
         Route::post('publications/{publication}/toggle', [PublicationController::class, 'toggle'])->name('publications.toggle');
+        Route::get('slides/{slide}', [SlideController::class, 'show'])->name('slides.show');
         Route::resource('slides', SlideController::class)->except(['show']);
         Route::post('slides/{slide}/toggle', [SlideController::class, 'toggle'])->name('slides.toggle');
 

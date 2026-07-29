@@ -40,23 +40,43 @@
 </div>
 
 <div class="mb-3">
-  <label class="form-label fw-semibold">Slide Image @if(!$slide)<span class="text-danger">*</span>@endif</label>
+  <label class="form-label fw-semibold">Slide Media @if(!$slide)<span class="text-danger">*</span>@endif</label>
   @if($slide?->image_path)
     <div class="mb-2">
-      <img src="{{ $slide->image_url }}" alt="Current slide" style="max-height:160px;border-radius:8px;object-fit:cover;">
-      <div class="text-muted small mt-1">Current image — upload a new one to replace it</div>
+      <img src="{{ $slide->media_url }}" alt="Current slide" style="max-height:160px;border-radius:8px;object-fit:cover;">
+      <div class="text-muted small mt-1">Current image</div>
+    </div>
+  @elseif($slide?->video_path)
+    <div class="mb-2">
+      <video src="{{ Storage::url($slide->video_path) }}" controls style="max-height:160px;border-radius:8px;max-width:100%;"></video>
+      <div class="text-muted small mt-1">Current video</div>
     </div>
   @endif
-  <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror"
-         {{ !$slide ? 'required' : '' }} id="imageInput">
+  <div class="row g-2">
+    <div class="col-md-6">
+      <label class="form-label small">Image (optional)</label>
+      <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror" id="imageInput">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label small">Video (optional, mp4/webm/ogg)</label>
+      <input type="file" name="video" accept="video/*" class="form-control @error('video') is-invalid @enderror">
+    </div>
+  </div>
   @if($slide?->image_path)
     <div class="form-check mt-2">
       <input class="form-check-input" type="checkbox" name="remove_image" id="remove_slide_image" value="1">
       <label class="form-check-label" for="remove_slide_image">Remove current image</label>
     </div>
   @endif
-  <div class="form-text">Recommended: 1920×1080px, JPG/PNG/WEBP, max 4 MB</div>
+  @if($slide?->video_path)
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" name="remove_video" id="remove_slide_video" value="1">
+      <label class="form-check-label" for="remove_slide_video">Remove current video</label>
+    </div>
+  @endif
+  <div class="form-text">Upload an image or a video. For videos, prefer MP4/WebM and keep the file size reasonable.</div>
   @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
+  @error('video')<div class="invalid-feedback">{{ $message }}</div>@enderror
   <div id="imagePreview" class="mt-2" style="display:none">
     <img id="previewImg" src="" alt="Preview" style="max-height:160px;border-radius:8px;object-fit:cover;">
     <div class="text-muted small mt-1">Preview of new image</div>

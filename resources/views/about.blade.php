@@ -28,13 +28,42 @@
   <div class="container">
     <div class="row gy-5 align-items-start">
       <div class="col-lg-6" data-aos="fade-right">
-        <h2>{{ setting('page_about_mission_heading','Our Mission') }}</h2>
-        <p>{{ setting('page_about_mission','To champion the safe, ethical, and effective use of information and communication technologies to improve health outcomes for all people in Botswana and the region.') }}</p>
+        <h2>Mission</h2>
+        <p>To advance the discipline of health informatics in Botswana by promoting knowledge exchange, capacity building, policy advocacy, research excellence, and collaboration across health and technology sectors for improvement of health outcomes.</p>
       </div>
       <div class="col-lg-6" data-aos="fade-left">
-        <h2>{{ setting('page_about_vision_heading','Our Vision') }}</h2>
-        <p>{{ setting('page_about_vision','A Botswana where every health decision is informed by accurate, timely, and accessible health data — enabling equitable, high-quality care for all.') }}</p>
+        <h2>Vision</h2>
+        <p>To be a leading force in transforming healthcare in Botswana through innovative, inclusive, and ethical use of health informatics.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Values -->
+<section class="section light-background">
+  <div class="container">
+    <div class="section-header text-center mb-4">
+      <h2>Core Values</h2>
+    </div>
+    <div class="row g-3 justify-content-center" data-aos="fade-up">
+      @foreach(['Innovation', 'Collaboration', 'Integrity', 'Excellence', 'Inclusivity', 'Capacity Building', 'Patient-Centeredness'] as $value)
+        <div class="col-md-4 col-sm-6">
+          <div class="pill card p-3 h-100 text-center">
+            <h5 class="mb-0">{{ $value }}</h5>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2>Call to Action</h2>
+      <p class="lead mb-4">Join us in transforming Botswana's healthcare through inclusive digital health technology.</p>
+      <a href="{{ url('/membership') }}" class="btn rounded-pill">Join Us</a>
     </div>
   </div>
 </section>

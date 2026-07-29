@@ -53,6 +53,14 @@
                 @if($s->type === 'textarea')
                   <textarea name="{{ $s->key }}" rows="3" class="form-control">{{ old($s->key, $s->value) }}</textarea>
 
+                @elseif(in_array($s->type, ['checkbox', 'boolean']))
+                  <div class="form-check form-switch mt-2">
+                    <input class="form-check-input" type="checkbox" role="switch"
+                           id="{{ $s->key }}" name="{{ $s->key }}" value="1"
+                           {{ old($s->key, $s->value) == '1' ? 'checked' : '' }}>
+                    <label class="form-check-label" for="{{ $s->key }}">Enable</label>
+                  </div>
+
                 @elseif($s->type === 'image')
                   <div class="d-flex align-items-start gap-4 flex-wrap">
                     @if($s->value)

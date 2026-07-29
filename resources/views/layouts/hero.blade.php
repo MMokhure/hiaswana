@@ -4,7 +4,15 @@
           <div class="hero-image slideshow" id="heroSlideshow">
             @if($heroSlides->isNotEmpty())
               @foreach($heroSlides as $slide)
-                <div class="slide" data-bg="{{ $slide->image_url }}" style="background-image: url('{{ $slide->image_url }}')" aria-hidden="true"></div>
+                @if($slide->type === 'video')
+                  <div class="slide" data-type="video" data-src="{{ Storage::url($slide->video_path) }}" aria-hidden="true">
+                    <video autoplay muted loop playsinline preload="metadata" poster="{{ $slide->image_path ? Storage::url($slide->image_path) : asset('assets/img/bg-img.jpeg') }}">
+                      <source src="{{ Storage::url($slide->video_path) }}" type="video/mp4">
+                    </video>
+                  </div>
+                @else
+                  <div class="slide" data-bg="{{ $slide->media_url }}" style="background-image: url('{{ $slide->media_url }}')" aria-hidden="true"></div>
+                @endif
               @endforeach
             @else
               <div class="slide" data-bg="{{ asset('assets/img/bg-img.jpeg') }}" style="background-image: url('{{ asset('assets/img/bg-img.jpeg') }}')" aria-hidden="true"></div>

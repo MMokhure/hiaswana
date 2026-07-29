@@ -8,7 +8,15 @@
               <div class="about-image-frame-new about-slideshow">
                 @if($aboutSlides->isNotEmpty())
                   @foreach($aboutSlides as $i => $slide)
-                    <div class="about-slide {{ $i === 0 ? 'active' : '' }}" data-bg="{{ $slide->image_url }}" style="background-image: url('{{ $slide->image_url }}')"></div>
+                    @if($slide->type === 'video')
+                      <div class="about-slide {{ $i === 0 ? 'active' : '' }}" data-type="video">
+                        <video autoplay muted loop playsinline preload="metadata" poster="{{ $slide->image_path ? Storage::url($slide->image_path) : asset('assets/img/bg-img.jpeg') }}">
+                          <source src="{{ Storage::url($slide->video_path) }}" type="video/mp4">
+                        </video>
+                      </div>
+                    @else
+                      <div class="about-slide {{ $i === 0 ? 'active' : '' }}" data-bg="{{ $slide->media_url }}" style="background-image: url('{{ $slide->media_url }}')"></div>
+                    @endif
                   @endforeach
                 @else
                   <div class="about-slide active" data-bg="{{ asset('assets/img/about3.jpeg') }}" style="background-image: url('{{ asset('assets/img/about3.jpeg') }}')"></div>

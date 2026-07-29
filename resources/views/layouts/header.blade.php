@@ -18,6 +18,7 @@
                   <li><a href="{{ url('/events') }}" class="nav-link"><i class="bi bi-calendar-event-fill d-xl-none"></i><span class="nav-text">Events</span></a></li>
                   <li><a href="{{ url('/team') }}" class="nav-link"><i class="bi bi-person-badge-fill d-xl-none"></i><span class="nav-text">Team</span></a></li>
                   <li><a href="{{ url('/publications') }}" class="nav-link"><i class="bi bi-journal-text d-xl-none"></i><span class="nav-text">Publications</span></a></li>
+                    <li><a href="{{ url('/newsletter') }}" class="nav-link"><i class="bi bi-facebook d-xl-none"></i><span class="nav-text">Newsletter</span></a></li>
                   <li><a href="{{ url('/contact') }}" class="nav-link"><i class="bi bi-envelope-fill d-xl-none"></i><span class="nav-text">Contact</span></a></li>
               </ul>
               <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

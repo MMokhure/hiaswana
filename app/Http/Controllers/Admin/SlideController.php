@@ -25,19 +25,36 @@ class SlideController extends Controller
         $data = $request->validate([
             'title'      => ['nullable', 'string', 'max:255'],
             'subtitle'   => ['nullable', 'string', 'max:500'],
-            'image'      => ['required', 'image', 'max:4096'],
+            'image'      => ['nullable', 'image', 'max:4096'],
+            'video'      => ['nullable', 'file', 'mimes:mp4,mov,webm,ogg', 'max:20480'],
             'location'   => ['required', 'in:hero,about'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active'  => ['nullable', 'boolean'],
         ]);
 
-        $data['image_path'] = $request->file('image')->store('slides', 'public');
-        $data['is_active']  = $request->boolean('is_active', true);
-        unset($data['image']);
+        if ($request->hasFile('image')) {
+            $data['image_path'] = $request->file('image')->store('slides', 'public');
+        } else {
+            $data['image_path'] = null;
+        }
+
+        if ($request->hasFile('video')) {
+            $data['video_path'] = $request->file('video')->store('slides/videos', 'public');
+        } else {
+            $data['video_path'] = null;
+        }
+
+        $data['is_active'] = $request->boolean('is_active', true);
+        unset($data['image'], $data['video']);
 
         Slide::create($data);
 
         return redirect()->route('admin.slides.index')->with('success', 'Slide added successfully.');
+    }
+
+    public function show(Slide $slide)
+    {
+        return view('admin.slides.edit', compact('slide'));
     }
 
     public function edit(Slide $slide)
@@ -51,6 +68,7 @@ class SlideController extends Controller
             'title'      => ['nullable', 'string', 'max:255'],
             'subtitle'   => ['nullable', 'string', 'max:500'],
             'image'      => ['nullable', 'image', 'max:4096'],
+            'video'      => ['nullable', 'file', 'mimes:mp4,mov,webm,ogg', 'max:20480'],
             'location'   => ['required', 'in:hero,about'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active'  => ['nullable', 'boolean'],
@@ -68,8 +86,20 @@ class SlideController extends Controller
             $data['image_path'] = null;
         }
 
+        if ($request->hasFile('video')) {
+            if ($slide->video_path) {
+                Storage::disk('public')->delete($slide->video_path);
+            }
+            $data['video_path'] = $request->file('video')->store('slides/videos', 'public');
+        } elseif ($request->boolean('remove_video')) {
+            if ($slide->video_path) {
+                Storage::disk('public')->delete($slide->video_path);
+            }
+            $data['video_path'] = null;
+        }
+
         $data['is_active'] = $request->boolean('is_active', true);
-        unset($data['image']);
+        unset($data['image'], $data['video']);
 
         $slide->update($data);
 
@@ -85,7 +115,12 @@ class SlideController extends Controller
 
     public function destroy(Slide $slide)
     {
-        Storage::disk('public')->delete($slide->image_path);
+        if ($slide->image_path) {
+            Storage::disk('public')->delete($slide->image_path);
+        }
+        if ($slide->video_path) {
+            Storage::disk('public')->delete($slide->video_path);
+        }
         $slide->delete();
         return redirect()->route('admin.slides.index')->with('success', 'Slide deleted.');
     }

@@ -288,6 +288,26 @@
                     <p class="payment-info-text">
                       {{ setting('page_membership_payment_info','After submitting this form, HIASWANA will email you payment details (bank transfer / mobile money) and confirm your membership once payment is received.') }}
                     </p>
+
+                    @if(setting('membership_bank_visible', '1') === '1')
+                    <div class="payment-bank-details mt-3">
+                      <h4 class="payment-bank-title"><i class="bi bi-bank"></i> {{ setting('membership_bank_section_title', 'Bank Details for Membership Payments and Donations') }}</h4>
+                      <dl class="row mb-2">
+                        <dt class="col-sm-4">Bank Name</dt>
+                        <dd class="col-sm-8">{{ setting('membership_bank_name', 'First National Bank Botswana') }}</dd>
+                        <dt class="col-sm-4">Account Name</dt>
+                        <dd class="col-sm-8">{{ setting('membership_bank_account_name', 'HIASWANA') }}</dd>
+                        <dt class="col-sm-4">Account Number</dt>
+                        <dd class="col-sm-8">{{ setting('membership_bank_account_number', 'Please contact HIASWANA for the account number') }}</dd>
+                        <dt class="col-sm-4">Branch Code</dt>
+                        <dd class="col-sm-8">{{ setting('membership_bank_branch_code', 'Please contact HIASWANA') }}</dd>
+                        <dt class="col-sm-4">Reference</dt>
+                        <dd class="col-sm-8">{{ setting('membership_bank_reference_note', 'Use your Full Name + Phone Number as payment reference.') }}</dd>
+                      </dl>
+                      <p class="mb-0">{{ setting('membership_donation_note', 'For donations, use the same account details and include "Donation" in your transfer reference.') }}</p>
+                    </div>
+                    @endif
+
                     <div class="payment-upload-section mt-3">
                       <label for="payment_proof" class="form-label fw-semibold">
                         <i class="bi bi-upload"></i> Upload Proof of Payment (optional)
@@ -297,6 +317,34 @@
                              accept=".jpg,.jpeg,.png,.pdf">
                       <div class="form-text">Accepted formats: JPG, PNG, PDF (max 5MB). If you have already paid, upload your payment receipt here.</div>
                       @error('payment_proof')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="data-rights-box">
+                    <h3 class="data-rights-title"><i class="bi bi-shield-lock"></i> Data Subject Rights Notice</h3>
+                    <p class="mb-2">By submitting this application, you can request access, correction, deletion, objection, or restriction of processing of your personal data, subject to applicable law.</p>
+                    <p class="mb-0">To exercise your rights, contact us via <a href="mailto:{{ setting('contact_email','info@hiaswana.co.bw') }}">{{ setting('contact_email','info@hiaswana.co.bw') }}</a> or visit our <a href="{{ route('privacy') }}">Privacy Notice</a>.</p>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="consent-box">
+                    <div class="form-check mb-3">
+                      <input class="form-check-input @error('consent_privacy') is-invalid @enderror" type="checkbox" id="consent_privacy" name="consent_privacy" value="1" {{ old('consent_privacy') ? 'checked' : '' }} required>
+                      <label class="form-check-label" for="consent_privacy">
+                        I have read and understood the <a href="{{ route('privacy') }}" target="_blank" rel="noopener">Privacy Notice</a> and consent to the processing of my personal data for membership administration. <span class="required">*</span>
+                      </label>
+                      @error('consent_privacy')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input @error('consent_terms') is-invalid @enderror" type="checkbox" id="consent_terms" name="consent_terms" value="1" {{ old('consent_terms') ? 'checked' : '' }} required>
+                      <label class="form-check-label" for="consent_terms">
+                        I agree to the <a href="{{ route('terms') }}" target="_blank" rel="noopener">Terms of Use</a>. <span class="required">*</span>
+                      </label>
+                      @error('consent_terms')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
                     </div>
                   </div>
                 </div>

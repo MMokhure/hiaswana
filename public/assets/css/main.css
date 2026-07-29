@@ -14,9 +14,9 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Lato",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --nav-font: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -396,6 +396,7 @@ h6 {
   .navmenu li:nth-child(4) { animation-delay: 0.2s; }
   .navmenu li:nth-child(5) { animation-delay: 0.25s; }
   .navmenu li:nth-child(6) { animation-delay: 0.3s; }
+  .navmenu li:nth-child(7) { animation-delay: 0.35s; }
 
   @keyframes fadeInNav {
     from {
@@ -1732,6 +1733,12 @@ section,
   transform: scale(1.00);
   z-index: 2;
 }
+.hero .slideshow .slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .hero .slideshow .slide.leave {
   opacity: 0;
   transform: scale(1.08);
@@ -2076,7 +2083,12 @@ section,
   opacity: 1;
   z-index: 2;
 }
-
+.about-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 .about-image-wrapper:hover .about-image-frame {
   transform: perspective(1000px) rotateY(0deg) scale(1.02);
@@ -3701,6 +3713,87 @@ section,
   margin-top: 10px;
 }
 
+.data-rights-box {
+  background: #f4fbff;
+  border: 1px solid #b9e9fb;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.data-rights-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #264A9D;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.data-rights-box p {
+  color: #44515f;
+  line-height: 1.6;
+}
+
+.consent-box {
+  background: #ffffff;
+  border: 2px solid #e7eef7;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.consent-box .form-check {
+  padding-left: 2rem;
+}
+
+.consent-box .form-check-input {
+  margin-top: 0.25rem;
+}
+
+.consent-box .form-check-label {
+  color: #384554;
+  line-height: 1.6;
+}
+
+.consent-box a,
+.data-rights-box a {
+  color: #264A9D;
+  font-weight: 600;
+}
+
+/* Legal Pages */
+.legal-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.legal-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e6edf7;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(10, 41, 90, 0.05);
+}
+
+.legal-card h2 {
+  color: #264A9D;
+  font-size: 22px;
+  margin-top: 1.5rem;
+}
+
+.legal-card h2:first-child {
+  margin-top: 0;
+}
+
+.legal-card p,
+.legal-card li {
+  color: #44515f;
+  line-height: 1.8;
+}
+
+.legal-card ul {
+  padding-left: 1.2rem;
+}
+
 .payment-info-header {
   display: flex;
   align-items: center;
@@ -3720,6 +3813,33 @@ section,
   color: #666666;
   line-height: 1.7;
   margin-bottom: 15px;
+}
+
+.payment-bank-details {
+  background: #ffffff;
+  border: 1px solid #b9e9fb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.payment-bank-title {
+  color: #264A9D;
+  font-size: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.payment-bank-details dt {
+  color: #264A9D;
+  font-weight: 700;
+}
+
+.payment-bank-details dd,
+.payment-bank-details p {
+  color: #44515f;
+  margin-bottom: 8px;
 }
 
 .btn-payment-disabled {
@@ -3843,15 +3963,6 @@ section,
   .btn-submit-membership {
     width: 100%;
     justify-content: center;
-  }
-}
-
-  .services-subheading {
-    font-size: 12px;
-  }
-
-  .service-card-image {
-    height: 200px;
   }
 }
 
@@ -7981,4 +8092,144 @@ section,
   padding-top: 60px;
   padding-bottom: 60px;
   /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# Newsletter Page
+--------------------------------------------------------------*/
+.newsletter-section {
+  padding-top: 70px;
+}
+
+.newsletter-facebook-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(10, 41, 90, 0.08);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.newsletter-container {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.newsletter-facebook-card iframe {
+  width: min(100%, 900px);
+  min-height: 1120px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.newsletter-side-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(10, 41, 90, 0.08);
+  padding: 24px;
+}
+
+@media (min-width: 1200px) {
+  .newsletter-side-card {
+    position: sticky;
+    top: 110px;
+  }
+}
+
+.newsletter-side-title {
+  color: #264A9D;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.newsletter-side-text {
+  color: #475569;
+  line-height: 1.7;
+}
+
+.newsletter-side-links {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+.newsletter-side-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #dbe6f4;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1e293b;
+  transition: all 0.2s ease;
+}
+
+.newsletter-side-link i {
+  color: #264A9D;
+}
+
+.newsletter-side-link:hover {
+  border-color: #47C4F2;
+  background: #f8fcff;
+}
+
+.newsletter-contact-box {
+  background: linear-gradient(135deg, rgba(71, 196, 242, 0.12) 0%, rgba(38, 74, 157, 0.08) 100%);
+  border: 1px solid #bfe6f8;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.newsletter-contact-box h4 {
+  margin-bottom: 8px;
+  color: #264A9D;
+}
+
+.newsletter-contact-box p {
+  margin-bottom: 12px;
+  color: #334155;
+}
+
+.newsletter-contact-btn {
+  display: inline-block;
+  background: #264A9D;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.newsletter-contact-btn:hover {
+  background: #1f3f85;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .newsletter-section {
+    padding-top: 50px;
+  }
+
+  .newsletter-container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .newsletter-facebook-card {
+    padding: 8px;
+  }
+
+  .newsletter-facebook-card iframe {
+    min-height: 760px;
+    height: 760px;
+  }
+
+  .newsletter-side-card {
+    padding: 16px;
+  }
 }

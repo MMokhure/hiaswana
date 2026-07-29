@@ -27,10 +27,15 @@ class Member extends Model
         'notes',
         'payment_proof',
         'payment_status',
+        'privacy_consent_at',
+        'terms_consent_at',
+        'consent_ip',
     ];
 
     protected $casts = [
         'approved_at' => 'datetime',
+        'privacy_consent_at' => 'datetime',
+        'terms_consent_at' => 'datetime',
     ];
 
     public static function generateMembershipNumber(): string

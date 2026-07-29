@@ -18,20 +18,23 @@
     <form method="POST" action="{{ route('admin.slides.update', $slide) }}" enctype="multipart/form-data">
       @csrf @method('PUT')
       @include('admin.slides._form')
-      <div class="mt-4 d-flex gap-2">
+      <div class="mt-4 d-flex gap-2 align-items-center">
         <button type="submit" class="btn btn-primary px-4">
           <i class="bi bi-save me-1"></i> Update Slide
         </button>
         <a href="{{ route('admin.slides.index') }}" class="btn btn-outline-secondary">Cancel</a>
-        <form method="POST" action="{{ route('admin.slides.destroy', $slide) }}" class="ms-auto"
-              onsubmit="return confirm('Delete this slide permanently?')">
-          @csrf @method('DELETE')
-          <button type="submit" class="btn btn-outline-danger btn-sm">
-            <i class="bi bi-trash me-1"></i> Delete
-          </button>
-        </form>
       </div>
     </form>
+
+    <div class="mt-3 d-flex justify-content-end">
+      <form method="POST" action="{{ route('admin.slides.destroy', $slide) }}"
+            onsubmit="return confirm('Delete this slide permanently?')">
+        @csrf @method('DELETE')
+        <button type="submit" class="btn btn-outline-danger btn-sm">
+          <i class="bi bi-trash me-1"></i> Delete
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 @endsection
